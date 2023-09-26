@@ -24,5 +24,6 @@ int main()
 	// tower.popRing();
 	IAlgorithmResolver* resolver = new HanoiResolver();
 	Board board(3, 8, resolver);
+	
 	return 0;
 }

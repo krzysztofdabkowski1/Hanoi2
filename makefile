@@ -4,7 +4,7 @@ OUTPUT_DIR= objs/
 
 output: main ring tower hanoi
 	@echo "Linking output..."
-	@g++  ${OUTPUT_DIR}main.o ${OUTPUT_DIR}tower.o ${OUTPUT_DIR}ring.o ${OUTPUT_DIR}CBoard.o ${OUTPUT_DIR}CHanoiResolver.o -o output.exe
+	@g++  ${OUTPUT_DIR}main.o ${OUTPUT_DIR}tower.o ${OUTPUT_DIR}CRing.o ${OUTPUT_DIR}CBoard.o ${OUTPUT_DIR}CHanoiResolver.o -o output.exe
 
 main: ring tower board hanoi
 	@echo "Compiling main..."
@@ -22,9 +22,9 @@ tower: ${SRC_DIR}tower.h ${SRC_DIR}tower.cpp
 	@echo "Compiling tower..."
 	@g++ -c ${SRC_DIR}tower.cpp -o ${OUTPUT_DIR}tower.o
 
-ring: ${SRC_DIR}ring.h ${SRC_DIR}ring.cpp
+ring: ${SRC_DIR}CRing.h ${SRC_DIR}CRing.cpp
 	@echo "Compiling ring..."
-	@g++ -c ${SRC_DIR}ring.cpp -o ${OUTPUT_DIR}ring.o
+	@g++ -c ${SRC_DIR}CRing.cpp -o ${OUTPUT_DIR}CRing.o
 
 clean:
 	@echo "Cleaning objs files..."

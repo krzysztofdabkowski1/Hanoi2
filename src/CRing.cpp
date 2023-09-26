@@ -1,6 +1,6 @@
-#include "ring.h"
+#include "CRing.h"
 
-Ring::Ring(unsigned int _size)
+CRing::CRing(unsigned int _size)
 {
 	size = _size;
 	
@@ -14,12 +14,12 @@ Ring::Ring(unsigned int _size)
 	}
 };
 	
-Color Ring::getColor()
+Color CRing::getColor()
 {
 	return color;
 };
 
-unsigned int Ring::getSize()
+unsigned int CRing::getSize()
 {
 	return size;
 };

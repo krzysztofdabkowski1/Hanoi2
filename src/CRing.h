@@ -4,14 +4,14 @@ enum Color
 	Black = 2
 };
 
-class Ring
+class CRing
 {
 
   public:
-	Ring(unsigned int _size);
+	CRing(unsigned int _size);
 	Color getColor();
 	unsigned int getSize();
-	inline bool isGreaterThan(Ring _ring)
+	inline bool isGreaterThan(CRing _ring)
 	{
 		return _ring.size > size;
 	}

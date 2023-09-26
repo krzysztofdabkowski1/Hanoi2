@@ -1,5 +1,5 @@
 #include <set>
-#include "Ring.h"
+#include "CRing.h"
 #include <exception>
 
 struct GreaterRingException : public std::exception {
@@ -14,18 +14,18 @@ struct EmptyTowerException : public std::exception {
    }
 };
 
-typedef std::set<Ring*> RingSet;
+typedef std::set<CRing*> RingSet;
 
 class Tower
 {
   public:
     Tower(unsigned int number);
-    mutable Ring * ptrTopRing;
+    mutable CRing * ptrTopRing;
     mutable RingSet _ringSet;
     unsigned int _number;
 
-    void addRing(Ring *ring) const;
-    Ring* popRing();
+    void addRing(CRing *ring) const;
+    CRing* popRing();
     inline bool isEmpty(){return ptrTopRing == nullptr;};
     void printTower();
    private:

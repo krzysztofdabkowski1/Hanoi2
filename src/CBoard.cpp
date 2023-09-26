@@ -3,15 +3,15 @@
 
 Board::Board(unsigned int numberOfTowers, unsigned int numberOfRings, IAlgorithmResolver* resolver):_resolver(resolver)
 {
-    setTowers(numberOfTowers, numberOfRings);
+    this->setTowers(numberOfTowers, numberOfRings);
     auto firstTower = _towerSet.begin();
     auto secondTower = (++_towerSet.begin());
     auto thirdTower = (++(++_towerSet.begin()));
-    Ring * tmpRing = (*firstTower)->popRing();
+    CRing * tmpRing = (*firstTower)->popRing();
     (*secondTower)->addRing(tmpRing);
     tmpRing = (*firstTower)->popRing();
     (*thirdTower)->addRing(tmpRing);
-    // printBoard();
+     printBoard();
     tmpRing = (*thirdTower)->popRing();
     printBoard();
     (*secondTower)->addRing(tmpRing);
@@ -30,7 +30,7 @@ void Board::setTowers(unsigned int numberOfTowers, unsigned int numberOfRings)
     auto firstTower = _towerSet.begin();
     for(int i = numberOfRings; i > 0; i--)
     {
-        Ring* tmpRing = new Ring(i);
+        CRing* tmpRing = new CRing(i);
         (*firstTower)->addRing(tmpRing);
     }
 }

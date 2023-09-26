@@ -7,7 +7,7 @@ Tower::Tower(unsigned int number)
     ptrTopRing = nullptr;
 };
 
-void Tower::addRing(Ring *ring) const
+void Tower::addRing(CRing *ring) const
 {
     if(_ringSet.empty())
     {
@@ -26,7 +26,7 @@ void Tower::addRing(Ring *ring) const
     std::cout<<"T"<<_number<<" dodaje: rozmiar: " << ptrTopRing->getSize()<<std::endl;
 };
 
-Ring* Tower::popRing()
+CRing* Tower::popRing()
 {
     printTower();
 
@@ -35,7 +35,7 @@ Ring* Tower::popRing()
         throw EmptyTowerException();
     }     
     
-    Ring* tmpRing;
+    CRing* tmpRing;
     tmpRing = *(--_ringSet.end());
     _ringSet.erase(--_ringSet.end());  
     if(_ringSet.end() != _ringSet.begin())
