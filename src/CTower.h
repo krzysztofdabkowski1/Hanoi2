@@ -16,10 +16,10 @@ struct EmptyTowerException : public std::exception {
 
 typedef std::set<CRing*> RingSet;
 
-class Tower
+class CTower
 {
   public:
-    Tower(unsigned int number);
+    CTower(unsigned int number);
     mutable CRing * ptrTopRing;
     mutable RingSet _ringSet;
     unsigned int _number;

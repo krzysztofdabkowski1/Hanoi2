@@ -22,7 +22,7 @@ void Board::setTowers(unsigned int numberOfTowers, unsigned int numberOfRings)
 {
     for(int i = 0; i < numberOfTowers; i++)
     {
-        Tower* tmpTower = new Tower(i+1);
+        CTower* tmpTower = new CTower(i+1);
         _towerSet.insert(tmpTower);
     } 
 

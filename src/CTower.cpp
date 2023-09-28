@@ -1,13 +1,13 @@
-#include "tower.h"
+#include "CTower.h"
 #include <iostream>
 
-Tower::Tower(unsigned int number)
+CTower::CTower(unsigned int number)
 {
     _number = number;
     ptrTopRing = nullptr;
 };
 
-void Tower::addRing(CRing *ring) const
+void CTower::addRing(CRing *ring) const
 {
     if(_ringSet.empty())
     {
@@ -26,7 +26,7 @@ void Tower::addRing(CRing *ring) const
     std::cout<<"T"<<_number<<" dodaje: rozmiar: " << ptrTopRing->getSize()<<std::endl;
 };
 
-CRing* Tower::popRing()
+CRing* CTower::popRing()
 {
     printTower();
 
@@ -47,7 +47,7 @@ CRing* Tower::popRing()
     return tmpRing;
 };
 
-void Tower::printTower()
+void CTower::printTower()
 {
     std::cout<<"[T"<<_number<<"]: "<<std::endl;
     for(RingSet::iterator itr = _ringSet.begin(); itr != _ringSet.end(); itr++)

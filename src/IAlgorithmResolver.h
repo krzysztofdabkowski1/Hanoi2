@@ -1,8 +1,8 @@
 #pragma once
 #include <set>
-#include "tower.h"
+#include "CTower.h"
 
-typedef std::set<Tower*> TowerSet;
+typedef std::set<CTower*> TowerSet;
 
 class IAlgorithmResolver
 {
