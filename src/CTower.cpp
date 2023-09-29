@@ -7,7 +7,7 @@ CTower::CTower(unsigned int number)
     ptrTopRing = nullptr;
 };
 
-void CTower::addRing(CRing *ring) const
+void CTower::addRing(CRing *ring)
 {
     if(_ringSet.empty())
     {

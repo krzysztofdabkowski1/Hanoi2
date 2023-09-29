@@ -18,4 +18,5 @@ class Board
     private:
     IAlgorithmResolver* _resolver = nullptr;
     TowerSet _towerSet;
+    CTower* getNthTower(const int n);
 };

@@ -20,11 +20,11 @@ class CTower
 {
   public:
     CTower(unsigned int number);
-    mutable CRing * ptrTopRing;
-    mutable RingSet _ringSet;
+    CRing * ptrTopRing;
+    RingSet _ringSet;
     unsigned int _number;
 
-    void addRing(CRing *ring) const;
+    void addRing(CRing *ring);
     CRing* popRing();
     inline bool isEmpty(){return ptrTopRing == nullptr;};
     void printTower();
