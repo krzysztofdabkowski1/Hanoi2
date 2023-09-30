@@ -22,29 +22,29 @@ void Board::setTowers(unsigned int numberOfTowers, unsigned int numberOfRings)
 {
     for(int i = 0; i < numberOfTowers; i++)
     {
-        CTower* tmpTower = new CTower(i+1);
-        _towerSet.insert(tmpTower);
+        //CTower* tmpTower = new CTower(i+1);
+        _towerVector.push_back(new CTower(i+1));
     } 
 
     /* Fill only first tower*/
-    auto firstTower = _towerSet.begin();
+    auto firstTower = _towerVector.begin();
     for(int i = numberOfRings; i > 0; i--)
     {
-        CRing* tmpRing = new CRing(i);
+        //CRing* tmpRing = new CRing(i);
         //std::cout<<(*firstTower)->_number;
-        (*firstTower)->addRing(tmpRing);
+        (*firstTower)->addRing(new CRing(i));
     }
 }
 
 void Board::printBoard()
 {
-    int height = _towerSet.size();
+    int height = _towerVector.size();
     std::cout<<height<<std::endl;
     std::cout<<"##############################"<<std::endl;
-    for(TowerSet::iterator its = _towerSet.begin(); its != _towerSet.end(); its++)
+    for(TowerVector::iterator its = _towerVector.begin(); its != _towerVector.end(); its++)
     {
         std::cout<<"T"<<(*its)->_number<<": "<<std::endl;
-        for(RingSet::iterator itr = (*its)->_ringSet.begin(); itr != (*its)->_ringSet.end(); itr++)
+        for(RingVector::iterator itr = (*its)->_ringVector.begin(); itr != (*its)->_ringVector.end(); itr++)
         {
             std::cout<<(*itr)->getSize();
         }
@@ -70,11 +70,11 @@ void Board::printBoard()
 
 CTower* Board::getNthTower(const int n)
 {   
-    if (n > _towerSet.size())
+    if (n > _towerVector.size())
         return nullptr;
 
     int counter = 0;
-    TowerSet::iterator its = _towerSet.begin();
+    TowerVector::iterator its = _towerVector.begin();
     while(counter < n)
     {
         its++;

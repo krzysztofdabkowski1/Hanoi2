@@ -9,9 +9,9 @@ CTower::CTower(unsigned int number)
 
 void CTower::addRing(CRing *ring)
 {
-    if(_ringSet.empty())
+    if(_ringVector.empty())
     {
-        _ringSet.insert(ring);
+        _ringVector.push_back(ring);
         ptrTopRing = ring;
     }     
     else
@@ -19,7 +19,7 @@ void CTower::addRing(CRing *ring)
         if(ptrTopRing->isGreaterThan(*ring))
             throw GreaterRingException();
 
-        _ringSet.insert(ring);
+        _ringVector.push_back(ring);
         ptrTopRing = ring;
     }
     
@@ -30,16 +30,16 @@ CRing* CTower::popRing()
 {
     printTower();
 
-    if(_ringSet.empty())
+    if(_ringVector.empty())
     {
         throw EmptyTowerException();
     }     
     
     CRing* tmpRing;
-    tmpRing = *(--_ringSet.end());
-    _ringSet.erase(--_ringSet.end());  
-    if(_ringSet.end() != _ringSet.begin())
-        ptrTopRing = *(--_ringSet.end());
+    tmpRing = *(--_ringVector.end());
+    _ringVector.erase(--_ringVector.end());  
+    if(_ringVector.end() != _ringVector.begin())
+        ptrTopRing = *(--_ringVector.end());
     else 
         ptrTopRing = nullptr;
 
@@ -50,7 +50,7 @@ CRing* CTower::popRing()
 void CTower::printTower()
 {
     std::cout<<"[T"<<_number<<"]: "<<std::endl;
-    for(RingSet::iterator itr = _ringSet.begin(); itr != _ringSet.end(); itr++)
+    for(RingVector::iterator itr = _ringVector.begin(); itr != _ringVector.end(); itr++)
     {
         std::cout<<(*itr)->getSize();
     }

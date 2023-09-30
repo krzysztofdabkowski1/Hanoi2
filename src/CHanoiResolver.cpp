@@ -1,5 +1,5 @@
 #include "CHanoiResolver.h"
 
-void HanoiResolver::MakeNextStep(TowerSet& _towerSet) { std::cout<<"Bly";};
+void HanoiResolver::MakeNextStep(TowerVector& _towerVector) { std::cout<<"Bly";};
 
-unsigned int HanoiResolver::ResolveGame(TowerSet& _towerSet) {return 0;};
+unsigned int HanoiResolver::ResolveGame(TowerVector& _towerVector) {return 0;};

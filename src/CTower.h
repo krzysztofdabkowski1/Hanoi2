@@ -1,4 +1,4 @@
-#include <set>
+#include <vector>
 #include "CRing.h"
 #include <exception>
 
@@ -14,14 +14,14 @@ struct EmptyTowerException : public std::exception {
    }
 };
 
-typedef std::set<CRing*> RingSet;
+typedef std::vector<CRing*> RingVector;
 
 class CTower
 {
   public:
     CTower(unsigned int number);
     CRing * ptrTopRing;
-    RingSet _ringSet;
+    RingVector _ringVector;
     unsigned int _number;
 
     void addRing(CRing *ring);
