@@ -20,6 +20,7 @@ class CTower
 {
   public:
     CTower(unsigned int number);
+    ~CTower();
     CRing * ptrTopRing;
     RingVector _ringVector;
     unsigned int _number;

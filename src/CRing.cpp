@@ -1,4 +1,5 @@
 #include "CRing.h"
+#include <iostream>
 
 CRing::CRing(unsigned int _size)
 {
@@ -13,6 +14,11 @@ CRing::CRing(unsigned int _size)
 		color = Color::Black;
 	}
 };
+
+CRing::~CRing()
+{
+    std::cout<<"Deleting Ring:"<<size<<std::endl;	
+}
 	
 Color CRing::getColor()
 {

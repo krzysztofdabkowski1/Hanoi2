@@ -9,11 +9,12 @@ class CRing
 
   public:
 	CRing(unsigned int _size);
+	~CRing();
 	Color getColor();
 	unsigned int getSize();
-	inline bool isGreaterThan(CRing _ring)
+	inline bool isGreaterThan(CRing *_ring)
 	{
-		return _ring.size > size;
+		return _ring->size > size;
 	}
 
   private:

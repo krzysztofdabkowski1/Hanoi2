@@ -1,38 +1,52 @@
 #include "CBoard.h"
 #include <iostream>
+#include "windows.h" 
 
 Board::Board(unsigned int numberOfTowers, unsigned int numberOfRings, IAlgorithmResolver* resolver):_resolver(resolver)
 {
     this->setTowers(numberOfTowers, numberOfRings);
-    auto firstTower = getNthTower(0);
-    auto secondTower = getNthTower(1);//(++_towerSet.begin());
-    auto thirdTower = getNthTower(2);//(++(++_towerSet.begin()));
-    CRing * tmpRing = firstTower->popRing();
-    secondTower->addRing(tmpRing);
-    tmpRing = firstTower->popRing();
-    thirdTower->addRing(tmpRing);
-     printBoard();
-    tmpRing = thirdTower->popRing();
-    printBoard();
-    secondTower->addRing(tmpRing);
-    printBoard();
+    try
+    {
+        auto firstTower = _towerVector[0];
+        auto secondTower = _towerVector[1];//(++_towerSet.begin());
+        auto thirdTower = _towerVector[2];//(++(++_towerSet.begin()));
+        CRing * tmpRing = firstTower->popRing();
+        secondTower->addRing(tmpRing);
+        tmpRing = firstTower->popRing();
+        thirdTower->addRing(tmpRing);
+        printBoard();
+        tmpRing = thirdTower->popRing();
+        printBoard();
+        secondTower->addRing(tmpRing);
+        printBoard();
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+        this->~Board();
+    }
+    
 };
 
+Board::~Board()
+{
+    for(TowerVector::iterator its = _towerVector.begin(); its != _towerVector.end(); its++)
+    {
+        delete *its;
+    }    
+}
 void Board::setTowers(unsigned int numberOfTowers, unsigned int numberOfRings)
 {
     for(int i = 0; i < numberOfTowers; i++)
     {
-        //CTower* tmpTower = new CTower(i+1);
         _towerVector.push_back(new CTower(i+1));
     } 
 
     /* Fill only first tower*/
-    auto firstTower = _towerVector.begin();
     for(int i = numberOfRings; i > 0; i--)
     {
-        //CRing* tmpRing = new CRing(i);
-        //std::cout<<(*firstTower)->_number;
-        (*firstTower)->addRing(new CRing(i));
+        CRing* tmpRing = new CRing(i);
+        _towerVector[0]->addRing(tmpRing);
     }
 }
 
@@ -67,18 +81,3 @@ void Board::printBoard()
 //     }
 //     std::cout<<"##############################"<<std::endl;
 // }
-
-CTower* Board::getNthTower(const int n)
-{   
-    if (n > _towerVector.size())
-        return nullptr;
-
-    int counter = 0;
-    TowerVector::iterator its = _towerVector.begin();
-    while(counter < n)
-    {
-        its++;
-        counter++;
-    }
-    return *its;
-}

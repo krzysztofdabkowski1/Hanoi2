@@ -6,6 +6,14 @@ CTower::CTower(unsigned int number)
     _number = number;
     ptrTopRing = nullptr;
 };
+CTower::~CTower()
+{
+    std::cout<<"Deleting tower:"<<_number<<std::endl;
+    for(RingVector::iterator itr = _ringVector.begin(); itr != _ringVector.end(); itr++)
+    {
+        delete *itr;
+    }
+};
 
 void CTower::addRing(CRing *ring)
 {
@@ -16,7 +24,7 @@ void CTower::addRing(CRing *ring)
     }     
     else
     {
-        if(ptrTopRing->isGreaterThan(*ring))
+        if(ptrTopRing->isGreaterThan(ring))
             throw GreaterRingException();
 
         _ringVector.push_back(ring);
