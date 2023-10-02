@@ -4,11 +4,15 @@ OUTPUT_DIR= objs/
 
 output: main ring tower hanoi
 	@echo "Linking output..."
-	@g++  ${OUTPUT_DIR}main.o ${OUTPUT_DIR}CTower.o ${OUTPUT_DIR}CRing.o ${OUTPUT_DIR}CBoard.o ${OUTPUT_DIR}CHanoiResolver.o -o output.exe
+	@g++  ${OUTPUT_DIR}main.o ${OUTPUT_DIR}CTower.o ${OUTPUT_DIR}CRing.o ${OUTPUT_DIR}CBoard.o  ${OUTPUT_DIR}CMoveReader.o ${OUTPUT_DIR}CHanoiResolver.o -o output.exe
 
-main: ring tower board hanoi
+main: ring tower board hanoi reader
 	@echo "Compiling main..."
 	@g++ -c ${SRC_DIR}main.cpp -o ${OUTPUT_DIR}main.o 
+
+reader: ${SRC_DIR}CMoveReader.h ${SRC_DIR}CMoveReader.cpp
+	@echo "Compiling CMoveReader..."
+	@g++ -c ${SRC_DIR}CMoveReader.cpp -o ${OUTPUT_DIR}CMoveReader.o
 
 hanoi: ${SRC_DIR}CHanoiResolver.h ${SRC_DIR}CHanoiResolver.cpp
 	@echo "Compiling CHanoiResolver..."
