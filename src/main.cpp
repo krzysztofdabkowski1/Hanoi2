@@ -1,6 +1,7 @@
 #include <iostream>
-#include "CBoard.h"
+// #include "CBoard.h"
 #include "CHanoiResolver.h"
+#include "CMoveReader.h"
 #include <map>
 
 class IAlgorithmResolver;
@@ -24,6 +25,7 @@ int main()
 	// tower.popRing();
 	IAlgorithmResolver* resolver = new HanoiResolver();
 	Board board(3, 8, resolver);
-	
+	MoveReader reader(&board);
+	reader.read();
 	return 0;
 }
