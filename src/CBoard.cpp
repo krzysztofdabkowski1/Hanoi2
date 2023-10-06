@@ -2,7 +2,9 @@
 #include <iostream>
 #include "windows.h" 
 
-Board::Board(unsigned int numberOfTowers, unsigned int numberOfRings, IAlgorithmResolver* resolver):_resolver(resolver)
+Board::Board(unsigned int numberOfTowers, unsigned int numberOfRings, IAlgorithmResolver* resolver):
+_resolver(resolver),
+_pointedTower(0)
 {
     this->setTowers(numberOfTowers, numberOfRings);
     try
@@ -67,6 +69,17 @@ void Board::printBoard()
     std::cout<<"##############################"<<std::endl;
 }
 
+void Board::movepointerToRight()
+{
+    if (_pointedTower < _towerVector.size())
+        _pointedTower++;
+}
+
+void Board::movepointerToLeft()
+{
+    if (_pointedTower > 0)
+        _pointedTower--;
+}
 // void Board::printBoard()
 // {
 //     std::cout<<"##############################"<<std::endl;

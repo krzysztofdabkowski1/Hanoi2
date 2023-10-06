@@ -1,9 +1,4 @@
 #include "IAlgorithmResolver.h"
-enum Move
-{
-    left,
-    right
-};
 
 class Board
 {
@@ -15,11 +10,13 @@ class Board
     void setTowers(unsigned int numerOfTowers, 
                    unsigned int numberOfRings);
     void printBoard();
-    void movePointer(Move move);
+    void movepointerToRight();
+    void movepointerToLeft();
     void pickRing();
     void putRing();
 
     private:
     IAlgorithmResolver* _resolver = nullptr;
     TowerVector _towerVector;
+    int _pointedTower;
 };
