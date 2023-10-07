@@ -19,11 +19,11 @@ void MoveReader::read()
 
 void MoveReader::movePointerToRight()
 {
-    //
+    _board->movePointerToRight();
 }
 void MoveReader::movePointerToLeft()
 {
-    //
+    _board->movePointerToLeft();
 }
 void MoveReader::grabRing()
 {

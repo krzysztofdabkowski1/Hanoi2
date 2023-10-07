@@ -10,8 +10,8 @@ class Board
     void setTowers(unsigned int numerOfTowers, 
                    unsigned int numberOfRings);
     void printBoard();
-    void movepointerToRight();
-    void movepointerToLeft();
+    void movePointerToRight();
+    void movePointerToLeft();
     void pickRing();
     void putRing();
 

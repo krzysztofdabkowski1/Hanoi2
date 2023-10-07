@@ -67,15 +67,16 @@ void Board::printBoard()
         std::cout<<std::endl;
     }
     std::cout<<"##############################"<<std::endl;
+    std::cout<<"Pointed tower:"<<_pointedTower<<std::endl;
 }
 
-void Board::movepointerToRight()
+void Board::movePointerToRight()
 {
     if (_pointedTower < _towerVector.size())
         _pointedTower++;
 }
 
-void Board::movepointerToLeft()
+void Board::movePointerToLeft()
 {
     if (_pointedTower > 0)
         _pointedTower--;
