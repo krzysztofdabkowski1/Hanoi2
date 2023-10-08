@@ -4,7 +4,8 @@
 
 Board::Board(unsigned int numberOfTowers, unsigned int numberOfRings, IAlgorithmResolver* resolver):
 _resolver(resolver),
-_pointedTower(0)
+_pointedTower(0),
+_pickedRing(nullptr)
 {
     this->setTowers(numberOfTowers, numberOfRings);
     try
@@ -80,6 +81,18 @@ void Board::movePointerToLeft()
 {
     if (_pointedTower > 0)
         _pointedTower--;
+}
+
+void Board::pickRing()
+{
+    CTower* _tmpTower = _towerVector[_pointedTower]; 
+    _pickedRing = _tmpTower->popRing();
+}
+
+void Board::putRing()
+{
+    CTower* _tmpTower = _towerVector[_pointedTower]; 
+    _tmpTower->addRing(_pickedRing);
 }
 // void Board::printBoard()
 // {

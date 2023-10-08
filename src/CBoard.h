@@ -19,4 +19,5 @@ class Board
     IAlgorithmResolver* _resolver = nullptr;
     TowerVector _towerVector;
     int _pointedTower;
+    CRing* _pickedRing;
 };

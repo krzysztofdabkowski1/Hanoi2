@@ -11,6 +11,6 @@ class MoveReader
     Board *_board;
     void movePointerToRight();
     void movePointerToLeft();
-    void grabRing();
-    void releaseRing();
+    void pickRing();
+    void putRing();
 };

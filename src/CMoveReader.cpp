@@ -25,11 +25,11 @@ void MoveReader::movePointerToLeft()
 {
     _board->movePointerToLeft();
 }
-void MoveReader::grabRing()
+void MoveReader::pickRing()
 {
     //
 }
-void MoveReader::releaseRing()
+void MoveReader::putRing()
 {
     //
 }
