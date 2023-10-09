@@ -13,4 +13,6 @@ class MoveReader
     void movePointerToLeft();
     void pickRing();
     void putRing();
+    void printInterface();
+    bool decodeButton(int button);
 };

@@ -8,26 +8,26 @@ _pointedTower(0),
 _pickedRing(nullptr)
 {
     this->setTowers(numberOfTowers, numberOfRings);
-    try
-    {
-        auto firstTower = _towerVector[0];
-        auto secondTower = _towerVector[1];//(++_towerSet.begin());
-        auto thirdTower = _towerVector[2];//(++(++_towerSet.begin()));
-        CRing * tmpRing = firstTower->popRing();
-        secondTower->addRing(tmpRing);
-        tmpRing = firstTower->popRing();
-        thirdTower->addRing(tmpRing);
-        printBoard();
-        tmpRing = thirdTower->popRing();
-        printBoard();
-        secondTower->addRing(tmpRing);
-        printBoard();
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-        this->~Board();
-    }
+    // try
+    // {
+    //     auto firstTower = _towerVector[0];
+    //     auto secondTower = _towerVector[1];//(++_towerSet.begin());
+    //     auto thirdTower = _towerVector[2];//(++(++_towerSet.begin()));
+    //     CRing * tmpRing = firstTower->popRing();
+    //     secondTower->addRing(tmpRing);
+    //     tmpRing = firstTower->popRing();
+    //     thirdTower->addRing(tmpRing);
+    //     printBoard();
+    //     tmpRing = thirdTower->popRing();
+    //     printBoard();
+    //     secondTower->addRing(tmpRing);
+    //     printBoard();
+    // }
+    // catch(const std::exception& e)
+    // {
+    //     std::cerr << e.what() << '\n';
+    //     this->~Board();
+    // }
     
 };
 
@@ -56,8 +56,8 @@ void Board::setTowers(unsigned int numberOfTowers, unsigned int numberOfRings)
 void Board::printBoard()
 {
     int height = _towerVector.size();
-    std::cout<<height<<std::endl;
-    std::cout<<"##############################"<<std::endl;
+    // std::cout<<height<<std::endl;
+    // std::cout<<"##############################"<<std::endl;
     for(TowerVector::iterator its = _towerVector.begin(); its != _towerVector.end(); its++)
     {
         std::cout<<"T"<<(*its)->_number<<": "<<std::endl;
@@ -67,13 +67,13 @@ void Board::printBoard()
         }
         std::cout<<std::endl;
     }
-    std::cout<<"##############################"<<std::endl;
-    std::cout<<"Pointed tower:"<<_pointedTower<<std::endl;
+    // std::cout<<"##############################"<<std::endl;
+    std::cout<<"Pointed tower:"<<_pointedTower + 1<<std::endl;
 }
 
 void Board::movePointerToRight()
 {
-    if (_pointedTower < _towerVector.size())
+    if (_pointedTower < _towerVector.size() - 1)
         _pointedTower++;
 }
 
