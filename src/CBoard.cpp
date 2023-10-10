@@ -91,8 +91,12 @@ void Board::pickRing()
 
 void Board::putRing()
 {
+    if (_pickedRing == nullptr)
+        return;
+        
     CTower* _tmpTower = _towerVector[_pointedTower]; 
     _tmpTower->addRing(_pickedRing);
+    _pickedRing = nullptr;
 }
 // void Board::printBoard()
 // {

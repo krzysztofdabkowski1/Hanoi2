@@ -37,18 +37,26 @@ void MoveReader::pickRing()
 }
 void MoveReader::putRing()
 {
-    _board->putRing();
+    try
+    {
+        _board->putRing();
+    }
+    catch(const GreaterRingException& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 }
 
 void MoveReader::printInterface()
 {
     std::cout<<"###############################################"<<std::endl;
-    std::cout<<""<<std::endl;
+    std::cout<<warning<<std::endl;
     std::cout<<"###############################################"<<std::endl;
 }
 
 bool MoveReader::decodeButton(int button)
 {
+    warning = "";
     switch(button) {
         case KEY_UP:
             pickRing();
