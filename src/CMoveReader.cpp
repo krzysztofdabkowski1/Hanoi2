@@ -33,7 +33,14 @@ void MoveReader::movePointerToLeft()
 }
 void MoveReader::pickRing()
 {
-    _board->pickRing();
+    try
+    {
+        _board->pickRing();
+    }
+    catch(const EmptyTowerException& e)
+    {
+        std::wcerr << e.what() << '\n';
+    }
 }
 void MoveReader::putRing()
 {
@@ -43,7 +50,7 @@ void MoveReader::putRing()
     }
     catch(const GreaterRingException& e)
     {
-        std::cerr << e.what() << '\n';
+        std::wcerr << e.what() << '\n';
     }
 }
 

@@ -31,7 +31,7 @@ void CTower::addRing(CRing *ring)
         ptrTopRing = ring;
     }
     
-    std::cout<<"T"<<_number<<" dodaje: rozmiar: " << ptrTopRing->getSize()<<std::endl;
+    // std::cout<<"T"<<_number<<" dodaje: rozmiar: " << ptrTopRing->getSize()<<std::endl;
 };
 
 CRing* CTower::popRing()
