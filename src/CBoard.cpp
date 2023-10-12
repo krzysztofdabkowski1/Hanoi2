@@ -93,10 +93,18 @@ void Board::putRing()
 {
     if (_pickedRing == nullptr)
         return;
-        
+
     CTower* _tmpTower = _towerVector[_pointedTower]; 
-    _tmpTower->addRing(_pickedRing);
-    _pickedRing = nullptr;
+    try
+    {
+        _tmpTower->addRing(_pickedRing);
+        _pickedRing = nullptr;
+    }
+    catch(const GreaterRingException& e)
+    {
+        throw GreaterRingException();
+    }
+    
 }
 // void Board::printBoard()
 // {
