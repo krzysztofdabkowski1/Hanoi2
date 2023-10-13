@@ -55,15 +55,16 @@ void Board::setTowers(unsigned int numberOfTowers, unsigned int numberOfRings)
 
 void Board::printBoard()
 {
-    int height = _towerVector.size();
+    int size = _towerVector.size();
     // std::cout<<height<<std::endl;
-    // std::cout<<"##############################"<<std::endl;
-    for(TowerVector::iterator its = _towerVector.begin(); its != _towerVector.end(); its++)
+    for(int tVec = 0; tVec < size; tVec++)
     {
-        std::cout<<"T"<<(*its)->_number<<": "<<std::endl;
-        for(RingVector::iterator itr = (*its)->_ringVector.begin(); itr != (*its)->_ringVector.end(); itr++)
+        std::cout<<"T"<<_towerVector[tVec]->_number<<": "<<std::endl;
+        for(int rVec = _towerVector[tVec]->_ringVector.size() - 1; rVec >=0; rVec--)
         {
-            std::cout<<(*itr)->getSize();
+            for (int i = 0; i < _towerVector[tVec]->_ringVector[rVec]->getSize(); i++)
+                std::cout<<(char)254u;
+            std::cout<<std::endl;
         }
         std::cout<<std::endl;
     }
