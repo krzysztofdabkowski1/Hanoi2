@@ -20,4 +20,5 @@ class Board
     TowerVector _towerVector;
     int _pointedTower;
     CRing* _pickedRing;
+    int _numberOfRings;
 };
