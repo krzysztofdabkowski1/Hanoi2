@@ -1,6 +1,7 @@
 #include "CBoard.h"
 #include <iostream>
 #include "windows.h" 
+#include <math.h> 
 
 Board::Board(unsigned int numberOfTowers, unsigned int numberOfRings, IAlgorithmResolver* resolver):
 _resolver(resolver),
@@ -82,13 +83,13 @@ void Board::printBoard()
         {
             if (_towerVector[tVec]->_ringVector.size() >= _numberOfRings - ring)
             {
-                for(int i = 0; i < _numberOfRings - ring/2; i++)
+                for(int i = 0; i < _numberOfRings - floor(ring/2); i++)
                     std::cout<<".";   
                 std::cout<<".";
                 for(int i = 0; i < _towerVector[tVec]->_ringVector[_numberOfRings - ring - 1]->getSize(); i++)
                     std::cout<<(char)254u;   
                 std::cout<<".";
-                for(int i = 0; i < _numberOfRings - ring/2; i++)
+                for(int i = 0; i < _numberOfRings - floor(ring/2); i++)
                     std::cout<<"."; 
             }
             else
@@ -129,6 +130,9 @@ void Board::movePointerToLeft()
 
 void Board::pickRing()
 {
+    if (_pickedRing != nullptr)
+        return;
+
     CTower* _tmpTower = _towerVector[_pointedTower]; 
     _pickedRing = _tmpTower->popRing();
 }
