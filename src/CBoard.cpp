@@ -64,7 +64,7 @@ void Board::printBoard()
         for(int i = 0; i < _numberOfRings; i++)
             std::cout<<".";
         std::cout<<"T"<<_towerVector[tVec]->_number<<":";
-        for(int i = 0; i < _numberOfRings; i++)
+        for(int i = 0; i < _numberOfRings - 1; i++)
             std::cout<<".";
         //std::cout<<std::endl;
         // for(int rVec = _towerVector[tVec]->_ringVector.size() - 1; rVec >=0; rVec--)
@@ -83,21 +83,22 @@ void Board::printBoard()
         {
             if (_towerVector[tVec]->_ringVector.size() >= _numberOfRings - ring)
             {
-                for(int i = 0; i < _numberOfRings - floor(ring/2); i++)
-                    std::cout<<".";   
-                std::cout<<".";
-                for(int i = 0; i < _towerVector[tVec]->_ringVector[_numberOfRings - ring - 1]->getSize(); i++)
-                    std::cout<<(char)254u;   
-                std::cout<<".";
-                for(int i = 0; i < _numberOfRings - floor(ring/2); i++)
-                    std::cout<<"."; 
+                int size = _towerVector[tVec]->_ringVector[_numberOfRings - ring - 1]->getSize();
+                for(int i = 0; i < _numberOfRings - size; i++)
+                    std::cout<<" ";   
+                std::cout<<" ";
+                for(int i = 0; i < size; i++)
+                    std::cout<<(char)254u<<(char)254u;   
+                std::cout<<" ";
+                for(int i = 0; i < _numberOfRings - size; i++)
+                    std::cout<<" "; 
             }
             else
             {
                 for(int i = 0; i < _numberOfRings; i++)
-                    std::cout<<".";
+                    std::cout<<" ";
                 //std::cout<<std::endl;
-                std::cout<<"...";
+                std::cout<<"   ";
                 // for(int rVec = _towerVector[tVec]->_ringVector.size() - 1; rVec >=0; rVec--)
                 // {
                 //     for (int i = 0; i < _towerVector[tVec]->_ringVector[rVec]->getSize(); i++)
@@ -106,7 +107,7 @@ void Board::printBoard()
                 // }
                 //std::cout<<std::endl;
                 for(int i = 0; i < _numberOfRings; i++)
-                    std::cout<<".";
+                    std::cout<<" ";
             }
             
         }
