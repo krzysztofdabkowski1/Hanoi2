@@ -62,21 +62,12 @@ void Board::printBoard()
     for(int tVec = 0; tVec < size; tVec++)
     {
         for(int i = 0; i < _numberOfRings; i++)
-            std::cout<<".";
+            std::cout<<" ";
         std::cout<<"T"<<_towerVector[tVec]->_number<<":";
         for(int i = 0; i < _numberOfRings - 1; i++)
-            std::cout<<".";
-        //std::cout<<std::endl;
-        // for(int rVec = _towerVector[tVec]->_ringVector.size() - 1; rVec >=0; rVec--)
-        // {
-        //     for (int i = 0; i < _towerVector[tVec]->_ringVector[rVec]->getSize(); i++)
-        //         std::cout<<(char)254u;
-        //     std::cout<<std::endl;
-        // }
-        //std::cout<<std::endl;
+            std::cout<<" ";
     }
-    // std::cout<<"##############################"<<std::endl;
-    std::cout<<std::endl;
+    std::cout<<std::endl<<std::endl;
     for(int ring = 0; ring < _numberOfRings; ring++)
     {    
         for(int tVec = 0; tVec < size; tVec++)
@@ -84,36 +75,25 @@ void Board::printBoard()
             if (_towerVector[tVec]->_ringVector.size() >= _numberOfRings - ring)
             {
                 int size = _towerVector[tVec]->_ringVector[_numberOfRings - ring - 1]->getSize();
-                for(int i = 0; i < _numberOfRings - size; i++)
+                for(int i = 0; i < _numberOfRings - size + 1; i++)
                     std::cout<<" ";   
-                std::cout<<" ";
                 for(int i = 0; i < size; i++)
                     std::cout<<(char)254u<<(char)254u;   
-                std::cout<<" ";
-                for(int i = 0; i < _numberOfRings - size; i++)
+                for(int i = 0; i < _numberOfRings - size + 1; i++)
                     std::cout<<" "; 
             }
             else
             {
                 for(int i = 0; i < _numberOfRings; i++)
                     std::cout<<" ";
-                //std::cout<<std::endl;
-                std::cout<<"   ";
-                // for(int rVec = _towerVector[tVec]->_ringVector.size() - 1; rVec >=0; rVec--)
-                // {
-                //     for (int i = 0; i < _towerVector[tVec]->_ringVector[rVec]->getSize(); i++)
-                //         std::cout<<(char)254u;
-                //     std::cout<<std::endl;
-                // }
-                //std::cout<<std::endl;
+                std::cout<<"||";
                 for(int i = 0; i < _numberOfRings; i++)
                     std::cout<<" ";
-            }
-            
+            }        
         }
         std::cout<<std::endl;
     }
-
+    std::cout<<std::endl;
     std::cout<<"Pointed tower:"<<_pointedTower + 1<<std::endl;
 }
 

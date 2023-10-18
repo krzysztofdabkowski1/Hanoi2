@@ -1,6 +1,7 @@
 #include "CMoveReader.h"
 #include <iostream>
 #include <conio.h>
+#include <stdlib.h> 
 
 #define KEY_UP 72
 #define KEY_DOWN 80
@@ -15,9 +16,11 @@ MoveReader::MoveReader(Board *board):_board(board)
 // ~MoveReader();
 void MoveReader::read()
 {
+    system("cls");
     _board->printBoard();
     while(decodeButton(getch()))
     {   
+        system("cls");
         _board->printBoard();
         // printInterface();
     }
