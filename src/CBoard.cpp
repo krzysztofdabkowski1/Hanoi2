@@ -7,30 +7,10 @@ Board::Board(unsigned int numberOfTowers, unsigned int numberOfRings, IAlgorithm
 _resolver(resolver),
 _numberOfRings(numberOfRings),
 _pointedTower(0),
+_moveCounter(0),
 _pickedRing(nullptr)
 {
-    this->setTowers(numberOfTowers, numberOfRings);
-    // try
-    // {
-    //     auto firstTower = _towerVector[0];
-    //     auto secondTower = _towerVector[1];//(++_towerSet.begin());
-    //     auto thirdTower = _towerVector[2];//(++(++_towerSet.begin()));
-    //     CRing * tmpRing = firstTower->popRing();
-    //     secondTower->addRing(tmpRing);
-    //     tmpRing = firstTower->popRing();
-    //     thirdTower->addRing(tmpRing);
-    //     printBoard();
-    //     tmpRing = thirdTower->popRing();
-    //     printBoard();
-    //     secondTower->addRing(tmpRing);
-    //     printBoard();
-    // }
-    // catch(const std::exception& e)
-    // {
-    //     std::cerr << e.what() << '\n';
-    //     this->~Board();
-    // }
-    
+    this->setTowers(numberOfTowers, numberOfRings);    
 };
 
 Board::~Board()
@@ -94,6 +74,7 @@ void Board::printBoard()
         std::cout<<std::endl;
     }
     std::cout<<std::endl;
+    std::cout<<"Counter:"<<_moveCounter<<std::endl;
     std::cout<<"Pointed tower:"<<_pointedTower + 1<<std::endl;
 }
 
@@ -128,6 +109,7 @@ void Board::putRing()
     {
         _tmpTower->addRing(_pickedRing);
         _pickedRing = nullptr;
+        _moveCounter++;
     }
     catch(const GreaterRingException& e)
     {
@@ -135,17 +117,3 @@ void Board::putRing()
     }
     
 }
-// void Board::printBoard()
-// {
-//     std::cout<<"##############################"<<std::endl;
-//     for(TowerSet::iterator its = _towerSet.begin(); its != _towerSet.end(); its++)
-//     {
-//         std::cout<<"T"<<(*its)->_number<<": "<<std::endl;
-//         for(RingSet::iterator itr = (*its)->_ringSet.begin(); itr != (*its)->_ringSet.end(); itr++)
-//         {
-//             std::cout<<(*itr)->getSize();
-//         }
-//         std::cout<<std::endl;
-//     }
-//     std::cout<<"##############################"<<std::endl;
-// }

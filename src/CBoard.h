@@ -21,4 +21,5 @@ class Board
     int _pointedTower;
     CRing* _pickedRing;
     int _numberOfRings;
+    int _moveCounter;
 };
