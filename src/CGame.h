@@ -1,12 +1,11 @@
 #include "CBoard.h"
 #include <iostream>
 
-class MoveReader
+class Game
 {
     public:
-    MoveReader(Board *board);
-    // ~MoveReader();
-    void read();
+    Game(Board *board);
+    void run();
 
     private:
     Board *_board;

@@ -1,4 +1,4 @@
-#include "CMoveReader.h"
+#include "CGame.h"
 #include <iostream>
 #include <conio.h>
 #include <stdlib.h> 
@@ -9,12 +9,11 @@
 #define KEY_RIGHT 77
 #define KEY_ESC 27
 
-MoveReader::MoveReader(Board *board):_board(board)
+Game::Game(Board *board):_board(board)
 {
     //
 }
-// ~MoveReader();
-void MoveReader::read()
+void Game::run()
 {
     system("cls");
     _board->printBoard();
@@ -26,15 +25,15 @@ void MoveReader::read()
     }
 }
 
-void MoveReader::movePointerToRight()
+void Game::movePointerToRight()
 {
     _board->movePointerToRight();
 }
-void MoveReader::movePointerToLeft()
+void Game::movePointerToLeft()
 {
     _board->movePointerToLeft();
 }
-void MoveReader::pickRing()
+void Game::pickRing()
 {
     try
     {
@@ -45,7 +44,7 @@ void MoveReader::pickRing()
         std::wcerr << e.what() << '\n';
     }
 }
-void MoveReader::putRing()
+void Game::putRing()
 {
     try
     {
@@ -57,14 +56,14 @@ void MoveReader::putRing()
     }
 }
 
-void MoveReader::printInterface()
+void Game::printInterface()
 {
     std::cout<<"###############################################"<<std::endl;
     std::cout<<warning<<std::endl;
     std::cout<<"###############################################"<<std::endl;
 }
 
-bool MoveReader::decodeButton(int button)
+bool Game::decodeButton(int button)
 {
     warning = "";
     switch(button) {
