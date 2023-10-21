@@ -19,6 +19,8 @@ void Game::run()
     _board->printBoard();
     while(decodeButton(getch()))
     {   
+        if(gameOver())
+            break;
         system("cls");
         _board->printBoard();
         // printInterface();
@@ -87,4 +89,9 @@ bool Game::decodeButton(int button)
             break;
     }
     return true;
+}
+
+bool Game::gameOver()
+{
+    return false;
 }

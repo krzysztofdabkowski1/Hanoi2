@@ -16,4 +16,5 @@ class Game
     void putRing();
     void printInterface();
     bool decodeButton(int button);
+    bool gameOver(); 
 };
