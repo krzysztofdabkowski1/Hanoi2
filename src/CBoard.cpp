@@ -64,11 +64,27 @@ void Board::printBoard()
             }
             else
             {
-                for(int i = 0; i < _numberOfRings; i++)
-                    std::cout<<" ";
-                std::cout<<"||";
-                for(int i = 0; i < _numberOfRings; i++)
-                    std::cout<<" ";
+                if (isRingPicked() && tVec == _pointedTower && ring == 0)
+                {
+                    for(int i = 0; i < _numberOfRings - _pickedRing->getSize() + 1; i++)
+                        std::cout<<" ";
+                    for(int i = 0; i < _pickedRing->getSize(); i++)
+                        std::cout<<(char)254u<<(char)254u;
+                    for(int i = 0; i < _numberOfRings - _pickedRing->getSize() + 1; i++)
+                        std::cout<<" ";
+                }
+                else
+                {
+                    for(int i = 0; i < _numberOfRings; i++)
+                        std::cout<<" ";
+                    if (tVec == _pointedTower)
+                        std::cout<<(char)186u<<(char)186u;
+                    else
+                        std::cout<<"||";
+                    
+                    for(int i = 0; i < _numberOfRings; i++)
+                        std::cout<<" ";
+                }
             }        
         }
         std::cout<<std::endl;

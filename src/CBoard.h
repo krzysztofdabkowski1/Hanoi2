@@ -22,4 +22,5 @@ class Board
     CRing* _pickedRing;
     int _numberOfRings;
     int _moveCounter;
+    inline bool isRingPicked() {return (_pickedRing == nullptr ? false: true);};
 };
