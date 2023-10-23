@@ -93,5 +93,5 @@ bool Game::decodeButton(int button)
 
 bool Game::gameOver()
 {
-    return false;
+    return _board->isGameOver();
 }

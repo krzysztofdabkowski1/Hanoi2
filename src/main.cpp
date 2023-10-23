@@ -9,7 +9,7 @@ class IAlgorithmResolver;
 int main()
 {
 	IAlgorithmResolver* resolver = new HanoiResolver();
-	Board board(4, 9, resolver);
+	Board board(4, 3, resolver);
 	Game game(&board);
 	game.run();
 	return 0;

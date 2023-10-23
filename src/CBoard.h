@@ -14,6 +14,7 @@ class Board
     void movePointerToLeft();
     void pickRing();
     void putRing();
+    bool isGameOver();
 
     private:
     IAlgorithmResolver* _resolver = nullptr;
@@ -23,4 +24,6 @@ class Board
     int _numberOfRings;
     int _moveCounter;
     inline bool isRingPicked() {return (_pickedRing == nullptr ? false: true);};
+    inline bool isFirstTowerEmpty() {return _towerVector[0]->isEmpty();}
+    bool hasAllRings(unsigned _tower);
 };

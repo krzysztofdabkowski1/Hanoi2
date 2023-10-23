@@ -133,3 +133,21 @@ void Board::putRing()
     }
     
 }
+bool Board::hasAllRings(unsigned _tower)
+{
+    return (_towerVector[_tower]->_ringVector.size() == _numberOfRings);
+}
+bool Board::isGameOver()
+{
+    bool allRingsMovedToOtherTower = false;
+    if (isFirstTowerEmpty())
+    {
+        for (int tower = 1; tower < _towerVector.size(); tower++ )
+        {
+            if (hasAllRings(tower))
+                allRingsMovedToOtherTower = true;
+        }
+    }
+
+    return allRingsMovedToOtherTower;
+}
