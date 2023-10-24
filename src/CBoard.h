@@ -15,6 +15,7 @@ class Board
     void pickRing();
     void putRing();
     bool isGameOver();
+    inline int getMoveCounter() {return _moveCounter;};
 
     private:
     IAlgorithmResolver* _resolver = nullptr;

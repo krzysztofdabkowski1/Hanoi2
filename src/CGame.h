@@ -17,4 +17,5 @@ class Game
     void printInterface();
     bool decodeButton(int button);
     bool gameOver(); 
+    void printGameOverBanner();
 };

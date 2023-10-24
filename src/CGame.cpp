@@ -25,6 +25,7 @@ void Game::run()
         _board->printBoard();
         // printInterface();
     }
+    printGameOverBanner();
 }
 
 void Game::movePointerToRight()
@@ -85,7 +86,7 @@ bool Game::decodeButton(int button)
             return false;
             break;
         default:
-            std::cout << std::endl << "null" << std::endl;  // not arrow
+            //std::cout << std::endl << "null" << std::endl;  // not arrow
             break;
     }
     return true;
@@ -94,4 +95,11 @@ bool Game::decodeButton(int button)
 bool Game::gameOver()
 {
     return _board->isGameOver();
+}
+
+void Game::printGameOverBanner()
+{
+    std::cout<<"###############################################"<<std::endl;
+    std::cout<<"You have completed the game. Your result is: "<<_board->getMoveCounter()<<std::endl;
+    std::cout<<"###############################################"<<std::endl;    
 }
