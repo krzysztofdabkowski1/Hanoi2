@@ -16,7 +16,9 @@ Game::Game(Board *board):_board(board)
 void Game::run()
 {
     system("cls");
-    _board->printBoard();
+    printHelpInfo();
+
+    // _board->printBoard();
     while(decodeButton(getch()))
     {   
         if(gameOver())
@@ -102,4 +104,21 @@ void Game::printGameOverBanner()
     std::cout<<"###############################################"<<std::endl;
     std::cout<<"You have completed the game. Your result is: "<<_board->getMoveCounter()<<std::endl;
     std::cout<<"###############################################"<<std::endl;    
+}
+
+void Game::printHelpInfo()
+{
+    std::cout<<"################################################"<<std::endl;
+    std::cout<<"##  T  O  W  E  R     O  F     H  A  N  O  I  ##"<<std::endl; 
+    std::cout<<"################################################"<<std::endl;    
+    std::cout<<"################################################"<<std::endl; 
+    std::cout<<std::endl;
+    std::cout<<"Object of the game is to move all the disks over"<<std::endl;
+    std::cout<<"to Tower 3 by using arrow keys. But you cannot "<<std::endl;
+    std::cout<<"place a larger disk onto a smaller disk.    "<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"Press ESC key to quit the game"<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<std::endl;
+    std::cout<<"Press any other key to start the game..."<<std::endl;
 }
