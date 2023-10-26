@@ -21,11 +21,10 @@ void Game::run()
     // _board->printBoard();
     while(decodeButton(getch()))
     {   
-        if(gameOver())
-            break;
         system("cls");
         _board->printBoard();
-        // printInterface();
+        if(gameOver())
+            break;
     }
     printGameOverBanner();
 }

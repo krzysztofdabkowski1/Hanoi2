@@ -48,23 +48,10 @@ void Board::printBoard()
             std::cout<<" ";
     }
     std::cout<<std::endl<<std::endl;
-    for(int ring = 0; ring < _numberOfRings; ring++)
-    {    
-        for(int tVec = 0; tVec < size; tVec++)
-        {
-            if (_towerVector[tVec]->_ringVector.size() >= _numberOfRings - ring)
-            {
-                int size = _towerVector[tVec]->_ringVector[_numberOfRings - ring - 1]->getSize();
-                for(int i = 0; i < _numberOfRings - size + 1; i++)
-                    std::cout<<" ";   
-                for(int i = 0; i < size; i++)
-                    std::cout<<(char)254u<<(char)254u;   
-                for(int i = 0; i < _numberOfRings - size + 1; i++)
-                    std::cout<<" "; 
-            }
-            else
-            {
-                if (isRingPicked() && tVec == _pointedTower && ring == 0)
+    /*Row with picked ring*/
+    for(int tVec = 0; tVec < size; tVec++)
+    {
+        if (isRingPicked() && tVec == _pointedTower )
                 {
                     for(int i = 0; i < _numberOfRings - _pickedRing->getSize() + 1; i++)
                         std::cout<<" ";
@@ -85,6 +72,33 @@ void Board::printBoard()
                     for(int i = 0; i < _numberOfRings; i++)
                         std::cout<<" ";
                 }
+    }
+    std::cout<<std::endl;
+    for(int ring = 0; ring < _numberOfRings; ring++)
+    {    
+        for(int tVec = 0; tVec < size; tVec++)
+        {
+            if (_towerVector[tVec]->_ringVector.size() >= _numberOfRings - ring)
+            {
+                int size = _towerVector[tVec]->_ringVector[_numberOfRings - ring - 1]->getSize();
+                for(int i = 0; i < _numberOfRings - size + 1; i++)
+                    std::cout<<" ";   
+                for(int i = 0; i < size; i++)
+                    std::cout<<(char)254u<<(char)254u;   
+                for(int i = 0; i < _numberOfRings - size + 1; i++)
+                    std::cout<<" "; 
+            }
+            else
+            {
+                for(int i = 0; i < _numberOfRings; i++)
+                    std::cout<<" ";
+                if (tVec == _pointedTower)
+                    std::cout<<(char)186u<<(char)186u;
+                else
+                    std::cout<<"||";
+                
+                for(int i = 0; i < _numberOfRings; i++)
+                    std::cout<<" ";
             }        
         }
         std::cout<<std::endl;
