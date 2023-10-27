@@ -4,8 +4,9 @@ class Board
 {
     public:
     Board(unsigned int numberOfTowers, 
-          unsigned int numberOfRings, 
-          IAlgorithmResolver* resolver);
+          unsigned int numberOfRings,
+          IAlgorithmResolver* resolver,
+          unsigned int finalTower = 3);
     ~Board();
     void setTowers(unsigned int numerOfTowers, 
                    unsigned int numberOfRings);
@@ -15,7 +16,8 @@ class Board
     void pickRing();
     void putRing();
     bool isGameOver();
-    inline int getMoveCounter() {return _moveCounter;};
+    inline int getMoveCounter() {return _movesCounter;};
+    inline int getFinalTower() {return _finalTower;};
 
     private:
     IAlgorithmResolver* _resolver = nullptr;
@@ -23,7 +25,9 @@ class Board
     int _pointedTower;
     CRing* _pickedRing;
     int _numberOfRings;
-    int _moveCounter;
+    int _movesCounter;
+    int _finalTower;
+
     inline bool isRingPicked() {return (_pickedRing == nullptr ? false: true);};
     inline bool isFirstTowerEmpty() {return _towerVector[0]->isEmpty();}
     bool hasAllRings(unsigned _tower);

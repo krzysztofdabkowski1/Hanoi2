@@ -113,10 +113,10 @@ void Game::printHelpInfo()
     std::cout<<"################################################"<<std::endl; 
     std::cout<<std::endl;
     std::cout<<"Object of the game is to move all the disks over"<<std::endl;
-    std::cout<<"to Tower 3 by using arrow keys. But you cannot "<<std::endl;
+    std::cout<<"to Tower "<<_board->getFinalTower()<<" by using arrow keys. But you cannot "<<std::endl;
     std::cout<<"place a larger disk onto a smaller disk.    "<<std::endl;
     std::cout<<std::endl;
-    std::cout<<"Press ESC key to quit the game"<<std::endl;
+    std::cout<<"Press ESC key to quit the game."<<std::endl;
     std::cout<<std::endl;
     std::cout<<std::endl;
     std::cout<<"Press any other key to start the game..."<<std::endl;

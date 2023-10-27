@@ -3,11 +3,15 @@
 #include "windows.h" 
 #include <math.h> 
 
-Board::Board(unsigned int numberOfTowers, unsigned int numberOfRings, IAlgorithmResolver* resolver):
+Board::Board(unsigned int numberOfTowers, 
+             unsigned int numberOfRings, 
+             IAlgorithmResolver* resolver,
+             unsigned int finalTower):
 _resolver(resolver),
 _numberOfRings(numberOfRings),
 _pointedTower(0),
-_moveCounter(0),
+_movesCounter(0),
+_finalTower(finalTower),
 _pickedRing(nullptr)
 {
     this->setTowers(numberOfTowers, numberOfRings);    
@@ -104,7 +108,7 @@ void Board::printBoard()
         std::cout<<std::endl;
     }
     std::cout<<std::endl;
-    std::cout<<"Counter:"<<_moveCounter<<std::endl;
+    std::cout<<"Counter:"<<_movesCounter<<std::endl;
     std::cout<<"Pointed tower:"<<_pointedTower + 1<<std::endl;
 }
 
@@ -139,7 +143,7 @@ void Board::putRing()
     {
         _tmpTower->addRing(_pickedRing);
         _pickedRing = nullptr;
-        _moveCounter++;
+        _movesCounter++;
     }
     catch(const GreaterRingException& e)
     {
