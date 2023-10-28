@@ -14,6 +14,8 @@ _movesCounter(0),
 _finalTower(finalTower),
 _pickedRing(nullptr)
 {
+    if (finalTower > numberOfTowers)
+        throw std::invalid_argument("ERROR: Final tower canntot be larger tha number of towers.");
     this->setTowers(numberOfTowers, numberOfRings);    
 };
 
@@ -149,7 +151,6 @@ void Board::putRing()
     {
         throw GreaterRingException();
     }
-    
 }
 bool Board::hasAllRings(unsigned _tower)
 {
@@ -157,15 +158,12 @@ bool Board::hasAllRings(unsigned _tower)
 }
 bool Board::isGameOver()
 {
-    bool allRingsMovedToOtherTower = false;
+    bool allRingsMovedToFinalTower = false;
     if (isFirstTowerEmpty())
     {
-        for (int tower = 1; tower < _towerVector.size(); tower++ )
-        {
-            if (hasAllRings(tower))
-                allRingsMovedToOtherTower = true;
-        }
+        if (hasAllRings(_finalTower - 1))
+            allRingsMovedToFinalTower = true;
     }
 
-    return allRingsMovedToOtherTower;
+    return allRingsMovedToFinalTower;
 }
