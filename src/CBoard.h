@@ -1,4 +1,13 @@
 #include "IAlgorithmResolver.h"
+#include <map>
+#include <string>
+
+enum MessageCode
+{
+    NO_MESSAGE,
+    EMPTY_TOWER,
+    TOO_LARGE   
+};
 
 class Board
 {
@@ -13,8 +22,8 @@ class Board
     void printBoard();
     void movePointerToRight();
     void movePointerToLeft();
-    void pickRing();
-    void putRing();
+    MessageCode pickRing();
+    MessageCode putRing();
     bool isGameOver();
     inline int getMoveCounter() {return _movesCounter;};
     inline int getFinalTower() {return _finalTower;};

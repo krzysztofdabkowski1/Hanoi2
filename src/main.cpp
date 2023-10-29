@@ -1,8 +1,7 @@
 #include <iostream>
-// #include "CBoard.h"
 #include "CHanoiResolver.h"
 #include "CGame.h"
-#include <map>
+
 
 class IAlgorithmResolver;
 
