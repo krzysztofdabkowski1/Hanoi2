@@ -23,6 +23,7 @@ void Game::run()
     {   
         system("cls");
         _board->printBoard();
+        printInterface();
         if(gameOver())
             break;
     }
@@ -39,25 +40,11 @@ void Game::movePointerToLeft()
 }
 void Game::pickRing()
 {
-    try
-    {
-        _board->pickRing();
-    }
-    catch(const EmptyTowerException& e)
-    {
-        std::wcerr << e.what() << '\n';
-    }
+    _board->pickRing();
 }
 void Game::putRing()
 {
-    try
-    {
-        _board->putRing();
-    }
-    catch(const GreaterRingException& e)
-    {
-        std::wcerr << e.what() << '\n';
-    }
+    _board->putRing();
 }
 
 void Game::printInterface()

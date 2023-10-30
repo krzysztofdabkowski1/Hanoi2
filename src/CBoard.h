@@ -2,13 +2,6 @@
 #include <map>
 #include <string>
 
-enum MessageCode
-{
-    NO_MESSAGE,
-    EMPTY_TOWER,
-    TOO_LARGE   
-};
-
 class Board
 {
     public:

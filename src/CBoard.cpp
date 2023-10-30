@@ -128,31 +128,28 @@ void Board::movePointerToLeft()
 
 MessageCode Board::pickRing()
 {
+    MessageCode returnCode;
     if (_pickedRing != nullptr)
         return MessageCode::NO_MESSAGE;
 
     CTower* _tmpTower = _towerVector[_pointedTower]; 
-    _pickedRing = _tmpTower->popRing();
-    return MessageCode::NO_MESSAGE;
+    _pickedRing = _tmpTower->popRing(returnCode);
+    return returnCode;
 }
 
 MessageCode Board::putRing()
 {
+    MessageCode returnCode;
+
     if (_pickedRing == nullptr)
         return MessageCode::NO_MESSAGE;
 
-    CTower* _tmpTower = _towerVector[_pointedTower]; 
-    try
-    {
-        _tmpTower->addRing(_pickedRing);
+    CTower* tmpTower = _towerVector[_pointedTower]; 
+    tmpTower->addRing(_pickedRing, returnCode);
+    if (returnCode == MessageCode::NO_MESSAGE)
         _pickedRing = nullptr;
-        _movesCounter++;
-    }
-    catch(const GreaterRingException& e)
-    {
-        return MessageCode::TOO_LARGE;
-    }
-    return MessageCode::NO_MESSAGE;
+    _movesCounter++;
+    return returnCode;
 }
 bool Board::hasAllRings(unsigned _tower)
 {

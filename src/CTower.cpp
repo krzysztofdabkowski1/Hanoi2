@@ -15,32 +15,43 @@ CTower::~CTower()
     }
 };
 
-void CTower::addRing(CRing *ring)
+void CTower::addRing(CRing *ring, MessageCode& _code)
 {
     if(_ringVector.empty())
     {
         _ringVector.push_back(ring);
         ptrTopRing = ring;
+        _code = MessageCode::NO_MESSAGE;
     }     
     else
     {
         if(ptrTopRing->isGreaterThan(ring))
-            throw GreaterRingException();
+        {
+            _code = MessageCode::TOO_LARGE;
 
-        _ringVector.push_back(ring);
-        ptrTopRing = ring;
+        }
+        else
+        {
+            _ringVector.push_back(ring);
+            ptrTopRing = ring;
+            _code = MessageCode::NO_MESSAGE;
+        }  
     }
     
     // std::cout<<"T"<<_number<<" dodaje: rozmiar: " << ptrTopRing->getSize()<<std::endl;
 };
-
-CRing* CTower::popRing()
+void CTower::addRing(CRing *ring)
 {
-    printTower();
-
+    MessageCode code;
+    this->addRing(ring, code);
+}
+CRing* CTower::popRing(MessageCode& _code)
+{
+    // printTower();
     if(_ringVector.empty())
     {
-        throw EmptyTowerException();
+        _code = MessageCode::EMPTY_TOWER;
+        return nullptr;
     }     
     
     CRing* tmpRing;
@@ -51,7 +62,7 @@ CRing* CTower::popRing()
     else 
         ptrTopRing = nullptr;
 
-    std::cout<<"T"<<_number<<" usuwam: rozmiar: " << tmpRing->getSize()<<std::endl;
+    _code = MessageCode::NO_MESSAGE;
     return tmpRing;
 };
 
