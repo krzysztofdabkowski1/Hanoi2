@@ -40,11 +40,15 @@ void Game::movePointerToLeft()
 }
 void Game::pickRing()
 {
-    _board->pickRing();
+    MessageCode retCode = _board->pickRing();
+    if (retCode == MessageCode::EMPTY_TOWER)
+        warning = "This tower is empty";
 }
 void Game::putRing()
 {
-    _board->putRing();
+    MessageCode retCode = _board->putRing();
+    if (retCode == MessageCode::TOO_LARGE)
+        warning = "This ring too large";
 }
 
 void Game::printInterface()

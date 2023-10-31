@@ -111,7 +111,7 @@ void Board::printBoard()
     }
     std::cout<<std::endl;
     std::cout<<"Counter:"<<_movesCounter<<std::endl;
-    std::cout<<"Pointed tower:"<<_pointedTower + 1<<std::endl;
+    // std::cout<<"Pointed tower:"<<_pointedTower + 1<<std::endl;
 }
 
 void Board::movePointerToRight()
@@ -147,8 +147,11 @@ MessageCode Board::putRing()
     CTower* tmpTower = _towerVector[_pointedTower]; 
     tmpTower->addRing(_pickedRing, returnCode);
     if (returnCode == MessageCode::NO_MESSAGE)
+    {
         _pickedRing = nullptr;
-    _movesCounter++;
+        _movesCounter++;
+    }
+    
     return returnCode;
 }
 bool Board::hasAllRings(unsigned _tower)
@@ -163,6 +166,5 @@ bool Board::isGameOver()
         if (hasAllRings(_finalTower - 1))
             allRingsMovedToFinalTower = true;
     }
-
     return allRingsMovedToFinalTower;
 }
