@@ -1,18 +1,10 @@
+#ifndef CTower_H
+#define CTower_H
+
 #include <vector>
 #include "CRing.h"
-#include <exception>
 
-struct GreaterRingException : public std::exception {
-   const char * what () const throw () {
-      return "The ring is too large!";
-   }
-};
-
-struct EmptyTowerException : public std::exception {
-   const char * what () const throw () {
-      return "There are no rings!";
-   }
-};
+typedef std::vector<CRing*>  RingVector;
 
 enum MessageCode
 {
@@ -20,8 +12,6 @@ enum MessageCode
     EMPTY_TOWER,
     TOO_LARGE   
 };
-
-typedef std::vector<CRing*> RingVector;
 
 class CTower
 {
@@ -40,3 +30,4 @@ class CTower
    private:
       
 };
+#endif

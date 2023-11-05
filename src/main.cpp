@@ -1,9 +1,7 @@
 #include <iostream>
-#include "CHanoiResolver.h"
 #include "CGame.h"
+#include "CHanoiResolver.h"
 
-
-class IAlgorithmResolver;
 
 int main()
 {

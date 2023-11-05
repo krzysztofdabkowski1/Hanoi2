@@ -1,6 +1,6 @@
-#pragma once
+
 #include <vector>
-#include "CTower.h"
+#include "CBoard.h"
 
 typedef std::vector<CTower*> TowerVector;
 

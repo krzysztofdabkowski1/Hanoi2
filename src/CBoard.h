@@ -1,6 +1,12 @@
-#include "IAlgorithmResolver.h"
+#ifndef Board_H
+#define Board_H
+
 #include <map>
 #include <string>
+#include "CTower.h"
+#include "IAlgorithmResolver.h"
+
+typedef std::vector<CTower*> TowerVector;
 
 class Board
 {
@@ -34,3 +40,4 @@ class Board
     inline bool isFirstTowerEmpty() {return _towerVector[0]->isEmpty();}
     bool hasAllRings(unsigned _tower);
 };
+#endif

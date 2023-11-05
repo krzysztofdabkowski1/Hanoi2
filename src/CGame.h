@@ -1,3 +1,6 @@
+#ifndef Game_H
+#define Game_H
+
 #include "CBoard.h"
 #include <iostream>
 
@@ -20,3 +23,4 @@ class Game
     void printGameOverBanner();
     void printHelpInfo();
 };
+#endif

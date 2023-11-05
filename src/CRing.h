@@ -1,3 +1,6 @@
+#ifndef CRing_H
+#define CRing_H
+
 enum Color
 {
 	White = 1,
@@ -21,3 +24,4 @@ class CRing
 	Color color;
 	unsigned int size;
 };
+#endif

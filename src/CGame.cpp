@@ -17,8 +17,6 @@ void Game::run()
 {
     system("cls");
     printHelpInfo();
-
-    // _board->printBoard();
     while(decodeButton(getch()))
     {   
         system("cls");
