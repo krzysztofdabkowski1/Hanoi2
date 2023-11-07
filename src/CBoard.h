@@ -31,7 +31,7 @@ class Board
     IAlgorithmResolver* _resolver = nullptr;
     TowerVector _towerVector;
     int _pointedTower;
-    CRing* _pickedRing;
+    Ring* _pickedRing;
     int _numberOfRings;
     int _movesCounter;
     int _finalTower;

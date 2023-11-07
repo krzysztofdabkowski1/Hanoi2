@@ -1,7 +1,7 @@
 #include "CRing.h"
 #include <iostream>
 
-CRing::CRing(unsigned int _size)
+Ring::Ring(unsigned int _size)
 {
 	size = _size;
 	
@@ -15,17 +15,17 @@ CRing::CRing(unsigned int _size)
 	}
 };
 
-CRing::~CRing()
+Ring::~Ring()
 {
     std::cout<<"Deleting Ring:"<<size<<std::endl;	
 }
 	
-Color CRing::getColor()
+Color Ring::getColor()
 {
 	return color;
 };
 
-unsigned int CRing::getSize()
+unsigned int Ring::getSize()
 {
 	return size;
 };

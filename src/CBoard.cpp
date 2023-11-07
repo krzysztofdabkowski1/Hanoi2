@@ -36,7 +36,7 @@ void Board::setTowers(unsigned int numberOfTowers, unsigned int numberOfRings)
     /* Fill only first tower*/
     for(int i = numberOfRings; i > 0; i--)
     {
-        CRing* tmpRing = new CRing(i);
+        Ring* tmpRing = new Ring(i);
         _towerVector[0]->addRing(tmpRing);
     }
 }

@@ -15,7 +15,7 @@ CTower::~CTower()
     }
 };
 
-void CTower::addRing(CRing *ring, MessageCode& _code)
+void CTower::addRing(Ring *ring, MessageCode& _code)
 {
     if(_ringVector.empty())
     {
@@ -40,12 +40,12 @@ void CTower::addRing(CRing *ring, MessageCode& _code)
     
     // std::cout<<"T"<<_number<<" dodaje: rozmiar: " << ptrTopRing->getSize()<<std::endl;
 };
-void CTower::addRing(CRing *ring)
+void CTower::addRing(Ring *ring)
 {
     MessageCode code;
     this->addRing(ring, code);
 }
-CRing* CTower::popRing(MessageCode& _code)
+Ring* CTower::popRing(MessageCode& _code)
 {
     // printTower();
     if(_ringVector.empty())
@@ -54,7 +54,7 @@ CRing* CTower::popRing(MessageCode& _code)
         return nullptr;
     }     
     
-    CRing* tmpRing;
+    Ring* tmpRing;
     tmpRing = *(--_ringVector.end());
     _ringVector.erase(--_ringVector.end());  
     if(_ringVector.end() != _ringVector.begin())

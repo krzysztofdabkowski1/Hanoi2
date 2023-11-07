@@ -4,7 +4,7 @@
 #include <vector>
 #include "CRing.h"
 
-typedef std::vector<CRing*>  RingVector;
+typedef std::vector<Ring*>  RingVector;
 
 enum MessageCode
 {
@@ -18,13 +18,13 @@ class CTower
   public:
     CTower(unsigned int number);
     ~CTower();
-    CRing * ptrTopRing;
+    Ring * ptrTopRing;
     RingVector _ringVector;
     unsigned int _number;
 
-    void addRing(CRing *ring, MessageCode& code);
-    void addRing(CRing *ring);
-    CRing* popRing(MessageCode& code);
+    void addRing(Ring *ring, MessageCode& code);
+    void addRing(Ring *ring);
+    Ring* popRing(MessageCode& code);
     inline bool isEmpty(){return ptrTopRing == nullptr;};
     void printTower();
    private:
