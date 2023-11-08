@@ -4,7 +4,9 @@
 #include <vector>
 #include "CRing.h"
 
+class CTower;
 typedef std::vector<Ring*>  RingVector;
+typedef std::vector<CTower*> TowerVector;
 
 enum MessageCode
 {

@@ -6,8 +6,6 @@
 #include "CTower.h"
 #include "IAlgorithmResolver.h"
 
-typedef std::vector<CTower*> TowerVector;
-
 class Board
 {
     public:

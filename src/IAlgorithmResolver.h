@@ -1,8 +1,8 @@
+#ifndef IAlgorithmResolver_H
+#define IAlgorithmResolver_H
 
 #include <vector>
-#include "CBoard.h"
-
-typedef std::vector<CTower*> TowerVector;
+#include "CTower.h"
 
 class IAlgorithmResolver
 {
@@ -12,3 +12,5 @@ class IAlgorithmResolver
     /* Resolves entire game and returns number of steps*/
     virtual unsigned int ResolveGame(TowerVector& _towerVector) = 0;
 };
+
+#endif
