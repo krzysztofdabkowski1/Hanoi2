@@ -1,12 +1,12 @@
 #include "CTower.h"
 #include <iostream>
 
-CTower::CTower(unsigned int number)
+Tower::Tower(unsigned int number)
 {
     _number = number;
     ptrTopRing = nullptr;
 };
-CTower::~CTower()
+Tower::~Tower()
 {
     std::cout<<"Deleting tower:"<<_number<<std::endl;
     for(RingVector::iterator itr = _ringVector.begin(); itr != _ringVector.end(); itr++)
@@ -15,7 +15,7 @@ CTower::~CTower()
     }
 };
 
-void CTower::addRing(Ring *ring, MessageCode& _code)
+void Tower::addRing(Ring *ring, MessageCode& _code)
 {
     if(_ringVector.empty())
     {
@@ -40,12 +40,12 @@ void CTower::addRing(Ring *ring, MessageCode& _code)
     
     // std::cout<<"T"<<_number<<" dodaje: rozmiar: " << ptrTopRing->getSize()<<std::endl;
 };
-void CTower::addRing(Ring *ring)
+void Tower::addRing(Ring *ring)
 {
     MessageCode code;
     this->addRing(ring, code);
 }
-Ring* CTower::popRing(MessageCode& _code)
+Ring* Tower::popRing(MessageCode& _code)
 {
     // printTower();
     if(_ringVector.empty())
@@ -66,7 +66,7 @@ Ring* CTower::popRing(MessageCode& _code)
     return tmpRing;
 };
 
-void CTower::printTower()
+void Tower::printTower()
 {
     std::cout<<"[T"<<_number<<"]: "<<std::endl;
     for(RingVector::iterator itr = _ringVector.begin(); itr != _ringVector.end(); itr++)

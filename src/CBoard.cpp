@@ -30,7 +30,7 @@ void Board::setTowers(unsigned int numberOfTowers, unsigned int numberOfRings)
 {
     for(int i = 0; i < numberOfTowers; i++)
     {
-        _towerVector.push_back(new CTower(i+1));
+        _towerVector.push_back(new Tower(i+1));
     } 
 
     /* Fill only first tower*/
@@ -132,7 +132,7 @@ MessageCode Board::pickRing()
     if (_pickedRing != nullptr)
         return MessageCode::NO_MESSAGE;
 
-    CTower* _tmpTower = _towerVector[_pointedTower]; 
+    Tower* _tmpTower = _towerVector[_pointedTower]; 
     _pickedRing = _tmpTower->popRing(returnCode);
     return returnCode;
 }
@@ -144,7 +144,7 @@ MessageCode Board::putRing()
     if (_pickedRing == nullptr)
         return MessageCode::NO_MESSAGE;
 
-    CTower* tmpTower = _towerVector[_pointedTower]; 
+    Tower* tmpTower = _towerVector[_pointedTower]; 
     tmpTower->addRing(_pickedRing, returnCode);
     if (returnCode == MessageCode::NO_MESSAGE)
     {

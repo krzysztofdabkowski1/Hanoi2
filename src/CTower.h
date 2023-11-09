@@ -1,12 +1,12 @@
-#ifndef CTower_H
-#define CTower_H
+#ifndef Tower_H
+#define Tower_H
 
 #include <vector>
 #include "CRing.h"
 
-class CTower;
+class Tower;
 typedef std::vector<Ring*>  RingVector;
-typedef std::vector<CTower*> TowerVector;
+typedef std::vector<Tower*> TowerVector;
 
 enum MessageCode
 {
@@ -15,11 +15,11 @@ enum MessageCode
     TOO_LARGE   
 };
 
-class CTower
+class Tower
 {
   public:
-    CTower(unsigned int number);
-    ~CTower();
+    Tower(unsigned int number);
+    ~Tower();
     Ring * ptrTopRing;
     RingVector _ringVector;
     unsigned int _number;

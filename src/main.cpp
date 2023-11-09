@@ -2,7 +2,6 @@
 #include "CGame.h"
 #include "CHanoiResolver.h"
 
-
 int main()
 {
 	IAlgorithmResolver* resolver = new HanoiResolver();
