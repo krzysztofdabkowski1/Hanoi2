@@ -7,7 +7,7 @@ class HanoiResolver: public IAlgorithmResolver
     int _numberOfTowers;
     public:
 
-    void MakeNextStep(TowerVector& _towerVector);
+    void MakeNextStep(Board& _board);
 
-    unsigned int ResolveGame(TowerVector& _towerVector);
+    unsigned int ResolveGame(Board& _board);
 };

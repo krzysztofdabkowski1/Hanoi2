@@ -2,16 +2,18 @@
 #define Game_H
 
 #include "CBoard.h"
+#include "IAlgorithmResolver.h"
 #include <iostream>
 
 class Game
 {
     public:
-    Game(Board *board);
+    Game(Board *board, IAlgorithmResolver* resolver);
     void run();
 
     private:
     Board *_board;
+    IAlgorithmResolver* _resolver = nullptr;
     std::string warning;
     void movePointerToRight();
     void movePointerToLeft();

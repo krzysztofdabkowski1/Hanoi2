@@ -5,8 +5,8 @@
 int main()
 {
 	IAlgorithmResolver* resolver = new HanoiResolver();
-	Board board(4, 3, resolver, 3);
-	Game game(&board);
+	Board board(4, 3, 3);
+	Game game(&board, resolver);
 	game.run();
 	return 0;
 }

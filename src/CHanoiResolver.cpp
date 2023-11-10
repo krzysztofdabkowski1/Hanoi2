@@ -1,9 +1,12 @@
 #include "CHanoiResolver.h"
 
-void HanoiResolver::MakeNextStep(TowerVector& _towerVector) 
+void HanoiResolver::MakeNextStep(Board& _board) 
 { 
-    _numberOfTowers = _towerVector.size();
-    
+    _numberOfTowers = _board.getTowerVector().size();
+
 };
 
-unsigned int HanoiResolver::ResolveGame(TowerVector& _towerVector) {return 0;};
+unsigned int HanoiResolver::ResolveGame(Board& _board) 
+{
+    return 0;
+};

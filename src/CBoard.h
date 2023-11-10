@@ -4,14 +4,13 @@
 #include <map>
 #include <string>
 #include "CTower.h"
-#include "IAlgorithmResolver.h"
+
 
 class Board
 {
     public:
     Board(unsigned int numberOfTowers, 
           unsigned int numberOfRings,
-          IAlgorithmResolver* resolver,
           unsigned int finalTower = 3);
     ~Board();
     void setTowers(unsigned int numerOfTowers, 
@@ -24,9 +23,9 @@ class Board
     bool isGameOver();
     inline int getMoveCounter() {return _movesCounter;};
     inline int getFinalTower() {return _finalTower;};
+    inline TowerVector getTowerVector() {return _towerVector;};
 
     private:
-    IAlgorithmResolver* _resolver = nullptr;
     TowerVector _towerVector;
     int _pointedTower;
     Ring* _pickedRing;

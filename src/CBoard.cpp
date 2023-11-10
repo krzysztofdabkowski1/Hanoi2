@@ -5,9 +5,7 @@
 
 Board::Board(unsigned int numberOfTowers, 
              unsigned int numberOfRings, 
-             IAlgorithmResolver* resolver,
              unsigned int finalTower):
-_resolver(resolver),
 _numberOfRings(numberOfRings),
 _pointedTower(0),
 _movesCounter(0),

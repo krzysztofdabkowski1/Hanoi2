@@ -9,7 +9,9 @@
 #define KEY_RIGHT 77
 #define KEY_ESC 27
 
-Game::Game(Board *board):_board(board)
+Game::Game(Board *board, IAlgorithmResolver* resolver):
+_board(board),
+_resolver(resolver)
 {
     //
 }
