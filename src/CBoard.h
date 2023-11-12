@@ -24,6 +24,8 @@ class Board
     inline int getMoveCounter() {return _movesCounter;};
     inline int getFinalTower() {return _finalTower;};
     inline TowerVector getTowerVector() {return _towerVector;};
+    inline int getPointedTower() {return _pointedTower;};
+    inline void setPointedTower(int pointedTower) {_pointedTower = pointedTower;};
 
     private:
     TowerVector _towerVector;
