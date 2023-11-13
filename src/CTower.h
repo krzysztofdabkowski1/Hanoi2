@@ -4,9 +4,8 @@
 #include <vector>
 #include "CRing.h"
 
-class Tower;
 typedef std::vector<Ring*>  RingVector;
-typedef std::vector<Tower*> TowerVector;
+typedef std::vector<Ring*>::iterator RingVecIt;
 
 enum MessageCode
 {
@@ -29,6 +28,7 @@ class Tower
     Ring* popRing(MessageCode& code);
     inline bool isEmpty(){return ptrTopRing == nullptr;};
     void printTower();
+    bool hasRingWithSize(unsigned size);
    private:
       
 };

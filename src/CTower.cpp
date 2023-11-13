@@ -74,4 +74,18 @@ void Tower::printTower()
         std::cout<<(*itr)->getSize();
     }
     std::cout<<std::endl;
-}
+};
+
+bool Tower::hasRingWithSize(unsigned size)
+{
+    bool ret = false;
+    for (RingVecIt it = _ringVector.begin(); it != _ringVector.begin(); it++)
+    {
+        if ((*it)->getSize() == size)
+        {
+            ret = true;
+            break;
+        }
+    }
+    return ret;
+};

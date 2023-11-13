@@ -166,3 +166,15 @@ bool Board::isGameOver()
     }
     return allRingsMovedToFinalTower;
 }
+
+int Board::towerWithLargestRing()
+{
+    int ret = 1;
+    int size = _towerVector.size();
+    for (int tower = 1; tower <= size; tower++)
+    {
+        if(_towerVector[tower - 1]->hasRingWithSize(_numberOfRings))
+            ret = tower;
+    }
+    return ret;
+}

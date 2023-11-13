@@ -5,6 +5,8 @@
 #include <string>
 #include "CTower.h"
 
+typedef std::vector<Tower*> TowerVector;
+typedef std::vector<Tower*>::iterator TowerVecIt;
 
 class Board
 {
@@ -25,7 +27,7 @@ class Board
     inline int getFinalTower() {return _finalTower;};
     inline TowerVector getTowerVector() {return _towerVector;};
     inline int getPointedTower() {return _pointedTower;};
-    inline void setPointedTower(int pointedTower) {_pointedTower = pointedTower;};
+    inline int setPointedTower(int pointedTower) {_pointedTower = pointedTower;};
 
     private:
     TowerVector _towerVector;
@@ -36,7 +38,8 @@ class Board
     int _finalTower;
 
     inline bool isRingPicked() {return (_pickedRing == nullptr ? false: true);};
-    inline bool isFirstTowerEmpty() {return _towerVector[0]->isEmpty();}
+    inline bool isFirstTowerEmpty() {return _towerVector[0]->isEmpty();};
     bool hasAllRings(unsigned _tower);
+    int towerWithLargestRing();
 };
 #endif
