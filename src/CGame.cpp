@@ -8,6 +8,7 @@
 #define KEY_LEFT 75
 #define KEY_RIGHT 77
 #define KEY_ESC 27
+#define KEY_F2 60
 
 Game::Game(Board *board, IAlgorithmResolver* resolver):
 _board(board),
@@ -56,6 +57,7 @@ void Game::printInterface()
     std::cout<<"###############################################"<<std::endl;
     std::cout<<warning<<std::endl;
     std::cout<<"###############################################"<<std::endl;
+    std::cout<<"###### ESC - quit the game, F2 - tip ##########"<<std::endl;
 }
 
 bool Game::decodeButton(int button)
@@ -77,8 +79,11 @@ bool Game::decodeButton(int button)
         case KEY_ESC:
             return false;
             break;
+        case KEY_F2:
+            _resolver->MakeNextStep();
+            break;
         default:
-            //std::cout << std::endl << "null" << std::endl;  // not arrow
+            // std::cout << std::endl << button << std::endl;  // not arrow
             break;
     }
     return true;
