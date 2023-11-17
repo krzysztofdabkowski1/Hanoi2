@@ -6,11 +6,12 @@
 
 class IAlgorithmResolver
 {
+    public:
     /* Do one move according to the implementation of algorithm*/
-    virtual void MakeNextStep(Board& _board) ;
+    virtual void MakeNextStep(Board& _board) = 0 ;
 
     /* Resolves entire game and returns number of steps*/
-    virtual unsigned int ResolveGame(Board& _board) ;
+    virtual unsigned int ResolveGame(Board& _board) = 0 ;
 };
 
 #endif

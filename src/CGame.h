@@ -13,7 +13,7 @@ class Game
 
     private:
     Board *_board;
-    IAlgorithmResolver* _resolver = nullptr;
+    IAlgorithmResolver* _resolver;
     std::string warning;
     void movePointerToRight();
     void movePointerToLeft();

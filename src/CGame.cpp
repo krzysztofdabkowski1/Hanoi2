@@ -80,7 +80,7 @@ bool Game::decodeButton(int button)
             return false;
             break;
         case KEY_F2:
-            _resolver->MakeNextStep();
+            _resolver->MakeNextStep(*_board);
             break;
         default:
             // std::cout << std::endl << button << std::endl;  // not arrow
