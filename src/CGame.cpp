@@ -51,7 +51,6 @@ void Game::putRing()
     if (retCode == MessageCode::TOO_LARGE)
         warning = "This ring too large";
 }
-
 void Game::printInterface()
 {
     std::cout<<"###############################################"<<std::endl;

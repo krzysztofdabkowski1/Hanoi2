@@ -123,6 +123,12 @@ void Board::movePointerToLeft()
     if (_pointedTower > 0)
         _pointedTower--;
 }
+void Board::moveRingTo(int destinationTower)
+{
+    this->pickRing();
+    this->setPointedTower(destinationTower);
+    this->putRing();
+}
 
 MessageCode Board::pickRing()
 {

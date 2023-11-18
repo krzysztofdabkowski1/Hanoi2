@@ -20,6 +20,7 @@ class Board
     void printBoard();
     void movePointerToRight();
     void movePointerToLeft();
+    void moveRingTo(int destinationTower);
     MessageCode pickRing();
     MessageCode putRing();
     bool isGameOver();
