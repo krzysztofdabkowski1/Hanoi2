@@ -29,6 +29,7 @@ class Board
     inline TowerVector getTowerVector() {return _towerVector;};
     inline int getPointedTower() {return _pointedTower;};
     inline void setPointedTower(int pointedTower) {_pointedTower = pointedTower;};
+    bool hasTwoOrderedTowers(int& emptyTower);
 
     private:
     TowerVector _towerVector;

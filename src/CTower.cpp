@@ -89,3 +89,19 @@ bool Tower::hasRingWithSize(unsigned size)
     }
     return ret;
 };
+bool Tower::hasOrderedRings()
+{
+    bool ret = true;
+    if (_ringVector.size() > 1)
+        for (RingVecIt it = _ringVector.begin() + 1; it != _ringVector.begin(); it++)
+        {
+            if ((*it)->getSize() + 1 != (*(it - 1))->getSize())
+            {
+                ret = false;
+                break;
+            }
+        }
+    else    
+        ret = false;
+    return ret;
+}

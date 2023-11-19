@@ -184,3 +184,20 @@ int Board::towerWithLargestRing()
     }
     return ret;
 }
+
+/* TODO Now here is assumption that there are only 3 towers*/
+bool Board::hasTwoOrderedTowers(int& emptyTower)
+{
+    int ret = 0;
+    int size = _towerVector.size();
+    for (int tower = 1; tower <= size; tower++)
+    {
+        if(_towerVector[tower - 1]->hasOrderedRings())
+            ret += 1;
+    }
+    
+    if (ret == 2)
+        return true;
+    else 
+        return false;
+}

@@ -29,6 +29,7 @@ class Tower
     inline bool isEmpty(){return ptrTopRing == nullptr;};
     void printTower();
     bool hasRingWithSize(unsigned size);
+    bool hasOrderedRings();
    private:
       
 };
