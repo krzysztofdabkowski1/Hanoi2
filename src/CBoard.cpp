@@ -194,6 +194,8 @@ bool Board::hasTwoOrderedTowers(int& emptyTower)
     {
         if(_towerVector[tower - 1]->hasOrderedRings())
             ret += 1;
+        else
+            emptyTower = tower - 1;
     }
     
     if (ret == 2)

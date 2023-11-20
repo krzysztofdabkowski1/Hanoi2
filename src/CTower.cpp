@@ -93,7 +93,7 @@ bool Tower::hasOrderedRings()
 {
     bool ret = true;
     if (_ringVector.size() > 1)
-        for (RingVecIt it = _ringVector.begin() + 1; it != _ringVector.begin(); it++)
+        for (RingVecIt it = _ringVector.begin() + 1; it != _ringVector.end(); it++)
         {
             if ((*it)->getSize() + 1 != (*(it - 1))->getSize())
             {
@@ -101,6 +101,8 @@ bool Tower::hasOrderedRings()
                 break;
             }
         }
+    else if(_ringVector.size() == 1)
+        ret = true;
     else    
         ret = false;
     return ret;
