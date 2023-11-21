@@ -186,7 +186,7 @@ int Board::towerWithLargestRing()
 }
 
 /* TODO Now here is assumption that there are only 3 towers*/
-bool Board::hasTwoOrderedTowers(int& emptyTower)
+bool Board::hasTwoOrderedTowers(int& unorderedTower)
 {
     int ret = 0;
     int size = _towerVector.size();
@@ -195,11 +195,28 @@ bool Board::hasTwoOrderedTowers(int& emptyTower)
         if(_towerVector[tower - 1]->hasOrderedRings())
             ret += 1;
         else
-            emptyTower = tower - 1;
+            unorderedTower = tower - 1;
     }
     
     if (ret == 2)
         return true;
     else 
         return false;
+}
+
+/* Skips empty towers*/
+int Board::getTowerWithLowestBaseRing()
+{
+    int ret = 0;
+    int size = _towerVector.size();
+    int lowestRing;
+    for (int tower = 1; tower <= size; tower++)
+    {
+        if(_towerVector[tower - 1]->baseRingSize() < lowestRing)
+        {
+            lowestRing = _towerVector[tower - 1]->baseRingSize();
+            ret = tower;
+        }          
+    }  
+    return ret;
 }

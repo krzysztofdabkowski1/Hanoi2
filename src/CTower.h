@@ -27,6 +27,7 @@ class Tower
     void addRing(Ring *ring);
     Ring* popRing(MessageCode& code);
     inline bool isEmpty(){return ptrTopRing == nullptr;};
+    inline int baseRingSize(){return _ringVector[0]->getSize();};
     void printTower();
     bool hasRingWithSize(unsigned size);
     bool hasOrderedRings();
