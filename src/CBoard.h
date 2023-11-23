@@ -31,6 +31,7 @@ class Board
     inline void setPointedTower(int pointedTower) {_pointedTower = pointedTower;};
     bool hasTwoOrderedTowers(int& unorderedTower);
     int getTowerWithLowestBaseRing();
+    int getTowerWithGreatestBaseRing();
 
 
     private:

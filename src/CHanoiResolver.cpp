@@ -5,14 +5,18 @@ void HanoiResolver::MakeNextStep(Board& _board)
     _numberOfTowers = _board.getTowerVector().size();
     int pointerdTower = _board.getPointedTower();
     
-    int emptyTower;
-    if (_board.hasTwoOrderedTowers(emptyTower))
+    int unorderedTower, tmpTower;
+    if (_board.hasTwoOrderedTowers(unorderedTower))
     {
-        std::cout<<"bly:"<<emptyTower<<std::endl;
-        if (pointerdTower == 0)
-            _board.moveRingTo(emptyTower);
+        tmpTower = _board.getTowerWithGreatestBaseRing();
+        if (pointerdTower != tmpTower)
+        {
+            _board.setPointedTower(tmpTower);
+            pointerdTower = tmpTower;
+        }
+        _board.moveRingTo(unorderedTower);
+        _tmpBaseTower = unorderedTower;
     }
-    // _board.setPointedTower(pointerdTower);
 };
 
 unsigned int HanoiResolver::ResolveGame(Board& _board) 

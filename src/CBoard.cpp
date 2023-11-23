@@ -209,13 +209,30 @@ int Board::getTowerWithLowestBaseRing()
 {
     int ret = 0;
     int size = _towerVector.size();
-    int lowestRing;
+    int lowestRing = _numberOfRings;
     for (int tower = 1; tower <= size; tower++)
     {
-        if(_towerVector[tower - 1]->baseRingSize() < lowestRing)
+        if(!_towerVector[tower - 1]->isEmpty() && _towerVector[tower - 1]->baseRingSize() < lowestRing)
         {
             lowestRing = _towerVector[tower - 1]->baseRingSize();
             ret = tower;
+        }          
+    }  
+    return ret;
+}
+
+/* Skips empty towers*/
+int Board::getTowerWithGreatestBaseRing()
+{
+    int ret = 0;
+    int size = _towerVector.size();
+    int greatestRing = 0;
+    for (int tower = 1; tower <= size; tower++)
+    {
+        if(!_towerVector[tower - 1]->isEmpty() && _towerVector[tower - 1]->baseRingSize() > greatestRing)
+        {
+            greatestRing = _towerVector[tower - 1]->baseRingSize();
+            ret = tower - 1;
         }          
     }  
     return ret;
