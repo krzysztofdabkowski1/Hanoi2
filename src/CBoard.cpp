@@ -186,7 +186,7 @@ int Board::towerWithLargestRing()
 }
 
 /* TODO Now here is assumption that there are only 3 towers*/
-bool Board::hasTwoOrderedTowers(int& unorderedTower)
+bool Board::hasTwoOrderedTowers(std::vector<int>& unorderedTower)
 {
     int ret = 0;
     int size = _towerVector.size();
@@ -195,7 +195,7 @@ bool Board::hasTwoOrderedTowers(int& unorderedTower)
         if(_towerVector[tower - 1]->hasOrderedRings())
             ret += 1;
         else
-            unorderedTower = tower - 1;
+            unorderedTower.push_back(tower - 1);
     }
     
     if (ret == 2)

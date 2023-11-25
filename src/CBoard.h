@@ -29,7 +29,7 @@ class Board
     inline TowerVector getTowerVector() {return _towerVector;};
     inline int getPointedTower() {return _pointedTower;};
     inline void setPointedTower(int pointedTower) {_pointedTower = pointedTower;};
-    bool hasTwoOrderedTowers(int& unorderedTower);
+    bool hasTwoOrderedTowers(std::vector<int>& unorderedTower);
     int getTowerWithLowestBaseRing();
     int getTowerWithGreatestBaseRing();
 
