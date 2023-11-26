@@ -204,6 +204,18 @@ bool Board::hasTwoOrderedTowers(std::vector<int>& unorderedTower)
         return false;
 }
 
+void Board::getOrderedTowers(std::vector<int>& orderedTower, std::vector<int>& unorderedTower)
+{
+    int ret = 0;
+    int size = _towerVector.size();
+    for (int tower = 1; tower <= size; tower++)
+    {
+        if(_towerVector[tower - 1]->hasOrderedRings())
+            orderedTower.push_back(tower - 1);
+        else
+            unorderedTower.push_back(tower - 1);
+    }
+}
 /* Skips empty towers*/
 int Board::getTowerWithLowestBaseRing()
 {
@@ -215,7 +227,7 @@ int Board::getTowerWithLowestBaseRing()
         if(!_towerVector[tower - 1]->isEmpty() && _towerVector[tower - 1]->baseRingSize() < lowestRing)
         {
             lowestRing = _towerVector[tower - 1]->baseRingSize();
-            ret = tower;
+            ret = tower - 1;
         }          
     }  
     return ret;
@@ -236,4 +248,19 @@ int Board::getTowerWithGreatestBaseRing()
         }          
     }  
     return ret;
+}
+
+void Board::getTowersSortedByBaseRing(std::vector<int>& towers)
+{
+    // int ret = 0;
+    // int size = _towerVector.size();
+    // int lowestRing = _numberOfRings;
+    // for (int tower = 1; tower <= size; tower++)
+    // {
+    //     if(!_towerVector[tower - 1]->isEmpty() && _towerVector[tower - 1]->baseRingSize() < lowestRing)
+    //     {
+    //         lowestRing = _towerVector[tower - 1]->baseRingSize();
+    //         ret = tower;
+    //     }          
+    // }  
 }
