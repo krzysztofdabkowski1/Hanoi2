@@ -32,7 +32,7 @@ class Board
     bool hasTwoOrderedTowers(std::vector<int>& unorderedTower);
     void getOrderedTowers(std::vector<int>& orderedTower, std::vector<int>& unorderedTower);
     void getTowersSortedByBaseRing(std::vector<int>& towers);
-    int getTowerWithLowestBaseRing();
+    int getTowerWithLowestBaseRing(int &size);
     int getTowerWithGreatestBaseRing();
 
 

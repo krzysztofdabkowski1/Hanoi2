@@ -21,7 +21,8 @@ void HanoiResolver::MakeNextStep(Board& _board)
     }
     else if (orderedTowers.size() == 3) 
     {
-        int lowTower   = _board.getTowerWithLowestBaseRing();
+        int baseRingSizeInLowTower;
+        int lowTower   = _board.getTowerWithLowestBaseRing(baseRingSizeInLowTower);
         int greatTower = _board.getTowerWithGreatestBaseRing();
         orderedTowers.erase(std::remove(orderedTowers.begin(), orderedTowers.end(), lowTower), orderedTowers.end());
         orderedTowers.erase(std::remove(orderedTowers.begin(), orderedTowers.end(), greatTower), orderedTowers.end());

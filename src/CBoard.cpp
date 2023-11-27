@@ -217,16 +217,15 @@ void Board::getOrderedTowers(std::vector<int>& orderedTower, std::vector<int>& u
     }
 }
 /* Skips empty towers*/
-int Board::getTowerWithLowestBaseRing()
+int Board::getTowerWithLowestBaseRing(int &size)
 {
     int ret = 0;
-    int size = _towerVector.size();
-    int lowestRing = _numberOfRings;
-    for (int tower = 1; tower <= size; tower++)
+    size = _numberOfRings;
+    for (int tower = 1; tower <= _towerVector.size(); tower++)
     {
-        if(!_towerVector[tower - 1]->isEmpty() && _towerVector[tower - 1]->baseRingSize() < lowestRing)
+        if(!_towerVector[tower - 1]->isEmpty() && _towerVector[tower - 1]->baseRingSize() < size)
         {
-            lowestRing = _towerVector[tower - 1]->baseRingSize();
+            size = _towerVector[tower - 1]->baseRingSize();
             ret = tower - 1;
         }          
     }  
