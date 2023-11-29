@@ -31,7 +31,7 @@ class Board
     inline void setPointedTower(int pointedTower) {_pointedTower = pointedTower;};
     bool hasTwoOrderedTowers(std::vector<int>& unorderedTower);
     void getOrderedTowers(std::vector<int>& orderedTower, std::vector<int>& unorderedTower);
-    void getTowersSortedByBaseRing(std::vector<int>& towers);
+    void getTowersSortedByBaseRing(std::vector<std::pair<int,int>>& towers);
     int getTowerWithLowestBaseRing(int &size);
     int getTowerWithGreatestBaseRing();
 

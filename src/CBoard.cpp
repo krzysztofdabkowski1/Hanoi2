@@ -2,6 +2,8 @@
 #include <iostream>
 #include "windows.h" 
 #include <math.h> 
+#include <utility>
+#include <algorithm>
 
 Board::Board(unsigned int numberOfTowers, 
              unsigned int numberOfRings, 
@@ -249,17 +251,16 @@ int Board::getTowerWithGreatestBaseRing()
     return ret;
 }
 
-void Board::getTowersSortedByBaseRing(std::vector<int>& towers)
+void Board::getTowersSortedByBaseRing(std::vector<std::pair<int,int>>& towers)
 {
-    // int ret = 0;
-    // int size = _towerVector.size();
-    // int lowestRing = _numberOfRings;
-    // for (int tower = 1; tower <= size; tower++)
-    // {
-    //     if(!_towerVector[tower - 1]->isEmpty() && _towerVector[tower - 1]->baseRingSize() < lowestRing)
-    //     {
-    //         lowestRing = _towerVector[tower - 1]->baseRingSize();
-    //         ret = tower;
-    //     }          
-    // }  
+    int ret = 0;
+    int size = _towerVector.size();
+    for (int tower = 0; tower < size; tower++)
+    {
+        if(!_towerVector[tower]->isEmpty())
+            towers.push_back(std::make_pair(tower, _towerVector[tower]->baseRingSize()));        
+    }  
+    std::sort(towers.begin(), towers.end(), [](auto &left, auto &right) {
+        return left.second < right.second;
+    });
 }
