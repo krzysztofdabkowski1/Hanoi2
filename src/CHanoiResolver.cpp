@@ -8,7 +8,18 @@ void HanoiResolver::MakeNextStep(Board& _board)
     
     std::vector<int> orderedTowers, unorderedTowers;
     _board.getOrderedTowers(orderedTowers, unorderedTowers);
-    if (orderedTowers.size() == 2)
+    if (orderedTowers.size() == 1 )
+    {
+        int tmpTower = _board.getTowerWithGreatestBaseRing();
+        if (pointedTower != tmpTower)
+        {
+            _board.setPointedTower(tmpTower);
+            pointedTower = tmpTower;
+        }
+        _board.moveRingTo(unorderedTowers[0]);
+        _tmpBaseTower = unorderedTowers[0];       
+    }
+    else if (orderedTowers.size() == 2)
     {
         int tmpTower = _board.getTowerWithGreatestBaseRing();
         if (pointedTower != tmpTower)
@@ -38,6 +49,8 @@ void HanoiResolver::MakeNextStep(Board& _board)
             _board.moveRingTo(orderedTowers[0]);
             _tmpBaseTower = orderedTowers[0];
         }
+
+        int destTower = _board.getTowerWithBaseRingSize(_board.getTowerVector()[lowTower]->baseRingSize() + 1);
     }
 };
 

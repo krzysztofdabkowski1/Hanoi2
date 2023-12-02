@@ -34,6 +34,7 @@ class Board
     void getTowersSortedByBaseRing(std::vector<std::pair<int,int>>& towers);
     int getTowerWithLowestBaseRing(int &size);
     int getTowerWithGreatestBaseRing();
+    int getTowerWithBaseRingSize(int size);
 
 
     private:

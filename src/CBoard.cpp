@@ -264,3 +264,16 @@ void Board::getTowersSortedByBaseRing(std::vector<std::pair<int,int>>& towers)
         return left.second < right.second;
     });
 }
+
+int Board::getTowerWithBaseRingSize(int size)
+{
+    int ret = 0;
+    for (int tower = 0; tower < _towerVector.size(); tower++)
+    {
+        if(!_towerVector[tower]->isEmpty() && _towerVector[tower]->baseRingSize() == size)
+        {
+            ret = _towerVector[tower]->baseRingSize();
+        }          
+    }  
+    return ret;   
+}
