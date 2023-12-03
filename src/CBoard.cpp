@@ -272,7 +272,20 @@ int Board::getTowerWithBaseRingSize(int size)
     {
         if(!_towerVector[tower]->isEmpty() && _towerVector[tower]->baseRingSize() == size)
         {
-            ret = _towerVector[tower]->baseRingSize();
+            ret = tower;
+        }          
+    }  
+    return ret;   
+}
+
+int Board::getTowerWithRingSize(int size)
+{
+    int ret = 0;
+    for (int tower = 0; tower < _towerVector.size(); tower++)
+    {
+        if(!_towerVector[tower]->isEmpty() && _towerVector[tower]->hasRingWithSize(size))
+        {
+            ret = tower;
         }          
     }  
     return ret;   

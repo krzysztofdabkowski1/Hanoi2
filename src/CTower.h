@@ -29,6 +29,8 @@ class Tower
     inline bool isEmpty(){return ptrTopRing == nullptr;};
     inline bool hasOneRing(){return _ringVector.size() == 1;};
     inline int baseRingSize(){return _ringVector[0]->getSize();};
+    inline int topRingSize(){return _ringVector[_ringVector.size() - 1]->getSize();};    
+    inline int size(){return _ringVector.size();};    
     void printTower();
     bool hasRingWithSize(unsigned size);
     bool hasOrderedRings();

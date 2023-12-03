@@ -79,7 +79,7 @@ void Tower::printTower()
 bool Tower::hasRingWithSize(unsigned size)
 {
     bool ret = false;
-    for (RingVecIt it = _ringVector.begin(); it != _ringVector.begin(); it++)
+    for (RingVecIt it = _ringVector.begin(); it != _ringVector.end(); it++)
     {
         if ((*it)->getSize() == size)
         {
