@@ -8,6 +8,10 @@ void HanoiResolver::MakeNextStep(Board& _board)
     
     std::vector<int> orderedTowers, unorderedTowers;
     _board.getOrderedTowers(orderedTowers, unorderedTowers);
+    std::vector<std::pair<int,int>> sortedTowers;
+    _board.getTowersSortedByBaseRing(sortedTowers);
+    int lowTower   = sortedTowers.front().first;
+    int largeTower = sortedTowers.back().first;
     if (orderedTowers.size() == 1 )
     {
         int tmpTower = _board.getTowerWithGreatestBaseRing();
@@ -16,34 +20,83 @@ void HanoiResolver::MakeNextStep(Board& _board)
             _board.setPointedTower(tmpTower);
             pointedTower = tmpTower;
         }
-        _board.moveRingTo(unorderedTowers[0]);
-        _tmpBaseTower = unorderedTowers[0];       
+
+        if (_board.getTowerVector()[tmpTower]->topRingSize() + 1 == _board.getTowerVector()[orderedTowers[0]]->topRingSize())
+        {
+            int destTower = _board.getTowerWithRingSize(_board.getTowerVector()[lowTower]->baseRingSize() + 1);
+            if (_board.getTowerVector()[destTower]->topRingSize() + 1 == _board.getTowerVector()[tmpTower]->topRingSize())
+            {
+                if (pointedTower != destTower)
+                {
+                    _board.setPointedTower(destTower);
+                    pointedTower = destTower;
+                }
+                _board.moveRingTo(tmpTower);
+                _tmpBaseTower = tmpTower;
+            }
+            else
+            {
+                _board.moveRingTo(orderedTowers[0]);
+                _tmpBaseTower = orderedTowers[0];
+            }
+
+        }
+        else
+        {
+            _board.moveRingTo(unorderedTowers[0]);
+            _tmpBaseTower = unorderedTowers[0];
+        }       
     }
     else if (orderedTowers.size() == 2)
     {
-        int tmpTower = _board.getTowerWithGreatestBaseRing();
-        if (pointedTower != tmpTower)
+        orderedTowers.erase(std::remove(orderedTowers.begin(), orderedTowers.end(), lowTower), orderedTowers.end());
+        orderedTowers.erase(std::remove(orderedTowers.begin(), orderedTowers.end(), largeTower), orderedTowers.end());
+        int destTower = _board.getTowerWithRingSize(_board.getTowerVector()[lowTower]->baseRingSize() + 1);
+        int startTower = _board.getTowerWithGreatestBaseRing();
+        if (_board.getTowerVector()[destTower]->topRingSize() == _board.getTowerVector()[lowTower]->topRingSize() + 1  
+            && startTower != destTower)
         {
-            _board.setPointedTower(tmpTower);
-            pointedTower = tmpTower;
+            if (pointedTower != lowTower)
+            {
+                _board.setPointedTower(lowTower);
+                pointedTower = lowTower;
+            }
+            _board.moveRingTo(destTower);
+            _tmpBaseTower = destTower;  
         }
-        _board.moveRingTo(unorderedTowers[0]);
-        _tmpBaseTower = unorderedTowers[0];
+        else if (_board.getTowerVector()[destTower]->topRingSize() + 1 == _board.getTowerVector()[lowTower]->topRingSize() 
+            && startTower != destTower)
+        {
+            if (pointedTower != lowTower)
+            {
+                _board.setPointedTower(lowTower);
+                pointedTower = lowTower;
+            }
+            _board.moveRingTo(startTower);
+            _tmpBaseTower = startTower;             
+        }
+        else
+        {
+            if (pointedTower != startTower)
+            {
+                _board.setPointedTower(startTower);
+                pointedTower = startTower;
+            }
+            _board.moveRingTo(unorderedTowers[0]);
+            _tmpBaseTower = unorderedTowers[0];
+        }
+
     }
     else if (orderedTowers.size() == 3) 
     {
-        int baseRingSizeInLowTower;
-        std::vector<std::pair<int,int>> sortedTowers;
-        _board.getTowersSortedByBaseRing(sortedTowers);
-        int lowTower   = sortedTowers.front().first;
-        int largeTower = sortedTowers.back().first;
-        orderedTowers.erase(std::remove(orderedTowers.begin(), orderedTowers.end(), lowTower), orderedTowers.end());
-        orderedTowers.erase(std::remove(orderedTowers.begin(), orderedTowers.end(), largeTower), orderedTowers.end());
         if (pointedTower != lowTower)
         {
             _board.setPointedTower(lowTower);
             pointedTower = lowTower;
         }
+
+        orderedTowers.erase(std::remove(orderedTowers.begin(), orderedTowers.end(), lowTower), orderedTowers.end());
+        orderedTowers.erase(std::remove(orderedTowers.begin(), orderedTowers.end(), largeTower), orderedTowers.end());
         if( _board.getTowerVector()[lowTower]->hasOneRing())
         {
             _board.moveRingTo(orderedTowers[0]);
@@ -52,8 +105,6 @@ void HanoiResolver::MakeNextStep(Board& _board)
         else
         {
             int destTower = _board.getTowerWithRingSize(_board.getTowerVector()[lowTower]->baseRingSize() + 1);
-            std::cout<<"baseRingSize:"<<_board.getTowerVector()[lowTower]->baseRingSize()<<std::endl;
-            std::cout<<"getTowerWithRingSize:"<<destTower<<std::endl;
             if (_board.getTowerVector()[destTower]->hasOneRing())
             {
                 if (_board.getTowerVector()[lowTower]->size() % 2 == 1)
