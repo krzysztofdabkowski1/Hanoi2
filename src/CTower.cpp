@@ -107,3 +107,26 @@ bool Tower::hasOrderedRings()
         ret = false;
     return ret;
 }
+int Tower::getBaseRingSizeOfSubtower()
+{
+    int ret = 0;
+    int endOfSubtower = 0;
+    RingVecIt it;
+    if(_ringVector.size() > 1)
+    {
+        for (it = _ringVector.begin() + 1; it != _ringVector.end(); it++)
+        {
+            if ((*it)->getSize() + 1 != (*(it - 1))->getSize())
+            {
+                endOfSubtower++;
+                if (endOfSubtower == 1)
+                    ret = (*it)->getSize(); 
+            }
+        }
+
+        if (endOfSubtower > 1)
+            ret = 0;
+    }
+
+    return ret;    
+}

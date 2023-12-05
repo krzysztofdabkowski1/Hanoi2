@@ -34,6 +34,7 @@ class Tower
     void printTower();
     bool hasRingWithSize(unsigned size);
     bool hasOrderedRings();
+    int getBaseRingSizeOfSubtower();
    private:
       
 };

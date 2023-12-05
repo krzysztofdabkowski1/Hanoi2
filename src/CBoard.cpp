@@ -290,3 +290,8 @@ int Board::getTowerWithRingSize(int size)
     }  
     return ret;   
 }
+
+int Board::getBaseRingSizeOfSubtower(int tower)
+{
+    return _towerVector[tower]->getBaseRingSizeOfSubtower();
+}

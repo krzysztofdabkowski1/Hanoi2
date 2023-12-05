@@ -36,6 +36,7 @@ class Board
     int getTowerWithGreatestBaseRing();
     int getTowerWithBaseRingSize(int size);
     int getTowerWithRingSize(int size);
+    int getBaseRingSizeOfSubtower(int tower);
 
     private:
     TowerVector _towerVector;
