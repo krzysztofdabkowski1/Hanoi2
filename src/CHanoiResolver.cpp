@@ -219,3 +219,13 @@ unsigned int HanoiResolver::ResolveGame(Board& _board)
 {
     return 0;
 };
+
+void HanoiResolver::setPointedTower(Board& _board, int _tower)
+{
+    int pointedTower = _board.getPointedTower();
+    if (pointedTower != _tower)
+    {
+        _board.setPointedTower(_tower);
+        pointedTower = _tower;
+    }    
+}
