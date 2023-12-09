@@ -295,3 +295,13 @@ int Board::getBaseRingSizeOfSubtower(int tower)
 {
     return _towerVector[tower]->getBaseRingSizeOfSubtower();
 }
+
+BoardState Board::getBoardState()
+{
+    BoardState state;
+    for (int tower = 0; tower < _towerVector.size(); tower++)
+    {
+        state.push_back(_towerVector[tower]->getTowerState());          
+    }
+    return state;
+}

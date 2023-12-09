@@ -6,6 +6,7 @@
 
 typedef std::vector<Ring*>  RingVector;
 typedef std::vector<Ring*>::iterator RingVecIt;
+typedef std::vector<int> TowerState;
 
 enum MessageCode
 {
@@ -35,6 +36,7 @@ class Tower
     bool hasRingWithSize(unsigned size);
     bool hasOrderedRings();
     int getBaseRingSizeOfSubtower();
+    TowerState getTowerState();
    private:
       
 };

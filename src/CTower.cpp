@@ -130,3 +130,12 @@ int Tower::getBaseRingSizeOfSubtower()
 
     return ret;    
 }
+
+TowerState Tower::getTowerState()
+{
+    TowerState state;
+    for (RingVecIt it = _ringVector.begin() + 1; it != _ringVector.end(); it++)
+        state.push_back((*it)->getSize());
+  
+    return state;
+}

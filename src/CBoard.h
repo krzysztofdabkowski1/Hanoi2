@@ -7,6 +7,7 @@
 
 typedef std::vector<Tower*> TowerVector;
 typedef std::vector<Tower*>::iterator TowerVecIt;
+typedef std::vector<std::vector<int>> BoardState;
 
 class Board
 {
@@ -37,6 +38,7 @@ class Board
     int getTowerWithBaseRingSize(int size);
     int getTowerWithRingSize(int size);
     int getBaseRingSizeOfSubtower(int tower);
+    BoardState getBoardState();
 
     private:
     TowerVector _towerVector;
