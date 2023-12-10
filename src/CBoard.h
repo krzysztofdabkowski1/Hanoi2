@@ -27,6 +27,7 @@ class Board
     bool isGameOver();
     inline int getMoveCounter() {return _movesCounter;};
     inline int getFinalTower() {return _finalTower;};
+    inline int getNumberOfRings() {return _numberOfRings;}; 
     inline TowerVector getTowerVector() {return _towerVector;};
     inline int getPointedTower() {return _pointedTower;};
     inline void setPointedTower(int pointedTower) {_pointedTower = pointedTower;};
