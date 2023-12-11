@@ -23,6 +23,16 @@ void HanoiResolver::MakeNextStep(Board& _board)
                  tower[THIRD].topRingSize == 1 &&
                  tower[SECOND].isEmpty)
             moveRing(_board, FIRST, SECOND);
+        else if (tower[FIRST].isOrdered &&
+                 tower[SECOND].isOrdered &&
+                 tower[THIRD].isOrdered &&
+                 tower[THIRD].topRingSize + 1 == tower[SECOND].topRingSize)
+            moveRing(_board, THIRD, SECOND);
+        else if (tower[FIRST].isOrdered &&
+                 tower[SECOND].isOrdered &&
+                 tower[THIRD].isOrdered &&
+                 tower[SECOND].topRingSize + 1 == tower[THIRD].topRingSize)
+            moveRing(_board, SECOND, THIRD);        
     }
 
 
