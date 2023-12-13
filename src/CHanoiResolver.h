@@ -7,6 +7,7 @@ struct TowerStat
     int  baseRingSize;
     int  topRingSize;
     int  baseRingSizeOfSubtower;
+    int  sizeOfSubtower;
     bool isEmpty;
     bool hasAllRings;
     bool isOrdered;
@@ -17,6 +18,7 @@ struct TowerStat
         baseRingSize(0),
         topRingSize(0),
         baseRingSizeOfSubtower(0),
+        sizeOfSubtower(0),
         isEmpty(true),
         hasAllRings(false),
         isOrdered(false),

@@ -295,12 +295,13 @@ void HanoiResolver::loadTowerStatVector(Board& _board)
     for(BoardState::iterator itTower = state.begin(); itTower != state.end(); itTower++)
     {
         TowerStat towerStat;
-        towerStat.size         = (*itTower).size();
-        towerStat.isEmpty      = true;
-        towerStat.hasAllRings  = (towerStat.size == _board.getNumberOfRings());
-        towerStat.isStartTower = (itTower == state.begin());
-        towerStat.isFinalTower = ((itTower - state.begin()) == _board.getFinalTower());
-        towerStat.isOrdered    = true;
+        towerStat.size           = (*itTower).size();
+        towerStat.isEmpty        = true;
+        towerStat.hasAllRings    = (towerStat.size == _board.getNumberOfRings());
+        towerStat.isStartTower   = (itTower == state.begin());
+        towerStat.isFinalTower   = ((itTower - state.begin()) == _board.getFinalTower());
+        towerStat.isOrdered      = true;
+        towerStat.sizeOfSubtower = 0;
         for(std::vector<int>::iterator itRing = (*itTower).begin(); itRing != (*itTower).end(); itRing++)
         {
             towerStat.isEmpty     = false;
@@ -308,10 +309,14 @@ void HanoiResolver::loadTowerStatVector(Board& _board)
             if (towerStat.baseRingSize == 0 )
                 towerStat.baseRingSize = *itRing;
 
+            if (towerStat.baseRingSizeOfSubtower > 0)
+                towerStat.sizeOfSubtower++;
+                
             if (itRing != (*itTower).begin() && *(itRing - 1) != ((*itRing) + 1))
             {
                 towerStat.isOrdered              = true;
                 towerStat.baseRingSizeOfSubtower = *itRing;
+                towerStat.sizeOfSubtower         = 1;
             }                
         } 
         tower.push_back(towerStat);
