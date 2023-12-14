@@ -50,6 +50,16 @@ void HanoiResolver::MakeNextStep(Board& _board)
         else if (tower[THIRD].isOrdered &&
                  tower[FIRST].topRingSize + 1 == tower[THIRD].topRingSize)
             moveRing(_board, FIRST, THIRD);
+        else if (tower[FIRST].isOrdered &&
+                 tower[SECOND].isOrdered &&
+                 tower[THIRD].isOrdered &&
+                 tower[THIRD].baseRingSize + 1 == tower[SECOND].baseRingSize)
+            moveRing(_board, THIRD, (tower[THIRD].size % 2 == 0) ? FIRST : SECOND);
+        else if (tower[FIRST].isOrdered &&
+                 tower[SECOND].isOrdered &&
+                 tower[THIRD].isOrdered &&
+                 tower[SECOND].baseRingSize + 1 == tower[THIRD].baseRingSize)
+            moveRing(_board, SECOND, (tower[SECOND].size % 2 == 0) ? FIRST : THIRD);
     }
 
 
@@ -311,7 +321,7 @@ void HanoiResolver::loadTowerStatVector(Board& _board)
 
             if (towerStat.baseRingSizeOfSubtower > 0)
                 towerStat.sizeOfSubtower++;
-                
+
             if (itRing != (*itTower).begin() && *(itRing - 1) != ((*itRing) + 1))
             {
                 towerStat.isOrdered              = true;
