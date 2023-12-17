@@ -39,6 +39,7 @@ class HanoiResolver: public IAlgorithmResolver
     void setPointedTower(Board& _board, int _tower);
     void loadTowerStatVector(Board& _board);
     void moveRing(Board& _board, int _sourceTower, int _destTower);
+    void findSourceDestTower(int& _sourceTower, int& _destTower);
     public:
 
     void MakeNextStep(Board& _board);

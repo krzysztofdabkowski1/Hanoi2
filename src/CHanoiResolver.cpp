@@ -75,7 +75,7 @@ void HanoiResolver::MakeNextStep(Board& _board)
                  tower[THIRD].isOrdered &&
                  tower[FIRST].baseRingSizeOfSubtower > 0 &&
                  tower[FIRST].baseRingSizeOfSubtower + 1 == tower[THIRD].topRingSize)
-        moveRing(_board, FIRST, (tower[FIRST].sizeOfSubtower % 1 == 0) ? SECOND : THIRD);
+            moveRing(_board, FIRST, (tower[FIRST].sizeOfSubtower % 1 == 0) ? SECOND : THIRD);
     }
 
 
@@ -347,4 +347,24 @@ void HanoiResolver::loadTowerStatVector(Board& _board)
         } 
         tower.push_back(towerStat);
     }     
+}
+
+void HanoiResolver::findSourceDestTower(int& _sourceTower, int& _destTower)
+{
+    if (tower[SECOND].baseRingSize + 1 == tower[THIRD].baseRingSize)
+    {
+        _sourceTower = THIRD;
+        _destTower   = SECOND;
+    }
+    else if (tower[THIRD].baseRingSize + 1 == tower[SECOND].baseRingSize)
+    {
+        _sourceTower = SECOND;
+        _destTower   = THIRD;       
+    }
+
+    if (tower[_sourceTower].baseRingSize > tower[FIRST].baseRingSize)
+    {
+        _sourceTower = FIRST;
+        _destTower   = THIRD;               
+    }
 }
