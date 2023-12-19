@@ -31,6 +31,11 @@ void HanoiResolver::MakeNextStep(Board& _board)
         else if (tower[FIRST].isOrdered &&
                  tower[SECOND].isOrdered &&
                  tower[THIRD].isOrdered &&
+                 tower[THIRD].baseRingSize + 1 == tower[SECOND].topRingSize)
+            moveRing(_board, THIRD, (tower[THIRD].size % 2 == 0) ? FIRST : SECOND);
+        else if (tower[FIRST].isOrdered &&
+                 tower[SECOND].isOrdered &&
+                 tower[THIRD].isOrdered &&
                  tower[SECOND].topRingSize + 1 == tower[THIRD].topRingSize)
             moveRing(_board, SECOND, THIRD);        
         else if (tower[SECOND].isOrdered &&
@@ -100,14 +105,16 @@ void HanoiResolver::MakeNextStep(Board& _board)
             }
             else if (sourceTower == FIRST && destTower == SECOND)
             {
-                moveRing(_board, FIRST, (tower[FIRST].size % 2 == 0) ? SECOND : THIRD);
+                moveRing(_board, FIRST, (tower[FIRST].sizeOfSubtower % 2 == 1) ? SECOND : THIRD);
             }
             else if (sourceTower == SECOND && destTower == FIRST)
             {
                 moveRing(_board, SECOND, (tower[SECOND].size % 2 == 0) ? FIRST : THIRD);
             }
-            std::cout<<sourceTower<<std::endl;
-            std::cout<<destTower<<std::endl;
+            else if (sourceTower == SECOND && destTower == THIRD)
+            {
+                moveRing(_board, SECOND, THIRD);
+            }
         }
     }
 
@@ -165,6 +172,7 @@ void HanoiResolver::loadTowerStatVector(Board& _board)
             {
                 towerStat.isOrdered              = false;
                 towerStat.baseRingSizeOfSubtower = *itRing;
+                towerStat.topRingSizeOfBaseTower = *(itRing - 1);
                 towerStat.sizeOfSubtower         = 1;
             }                
         } 
@@ -189,7 +197,7 @@ void HanoiResolver::findSourceDestTower(int& _sourceTower, int& _destTower)
              tower[THIRD].size == 1 &&
              tower[SECOND].size > 1)
     {
-        if (tower[FIRST].baseRingSizeOfSubtower== tower[SECOND].baseRingSizeOfSubtower + 1)
+        if (tower[FIRST].baseRingSizeOfSubtower == tower[SECOND].baseRingSizeOfSubtower + 1)
         {
             _sourceTower = SECOND;
             _destTower   = FIRST;             
@@ -200,7 +208,29 @@ void HanoiResolver::findSourceDestTower(int& _sourceTower, int& _destTower)
             _destTower   = SECOND;  
         }     
     }
+    else if ((tower[FIRST].baseRingSizeOfSubtower + 1 == tower[SECOND].topRingSize && tower[SECOND].isOrdered) || 
+             (tower[SECOND].topRingSize + 1 == tower[FIRST].topRingSize && tower[FIRST].baseRingSizeOfSubtower + 1 == tower[SECOND].topRingSizeOfBaseTower))
+    {
+        _sourceTower = FIRST;
+        _destTower   = SECOND; 
+    }
+    else if (tower[FIRST].baseRingSizeOfSubtower == tower[SECOND].topRingSizeOfBaseTower + 1 && 
+             tower[THIRD].isOrdered && 
+             tower[THIRD].topRingSize == tower[SECOND].topRingSize + 1)
+    {
+        _sourceTower = SECOND;
+        _destTower   = THIRD; 
+    }
+    else if (tower[FIRST].topRingSize + 1 == tower[SECOND].topRingSizeOfBaseTower && 
+             tower[THIRD].isOrdered && 
+             tower[THIRD].topRingSize == tower[SECOND].topRingSize + 1)
+    {
+        _sourceTower = SECOND;
+        _destTower   = THIRD; 
+    }
 
+    std::cout<<_sourceTower<<std::endl;
+    std::cout<<_destTower<<std::endl;
     if (tower[_sourceTower].baseRingSize > tower[FIRST].baseRingSize)
     {
         _sourceTower = FIRST;
