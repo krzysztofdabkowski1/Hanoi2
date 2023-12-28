@@ -372,6 +372,36 @@ void HanoiResolver::MakeNextStep(Board& _board)
                  tower[SECOND].topRingSize + 1 == tower[THIRD].topRingSize &&
                  tower[FIRST].topRingSizeOfBaseTower == tower[THIRD].topRingSize + 1)
             moveRing(_board, SECOND, THIRD);        
+        else if (!tower[FIRST].isOrdered &&
+                 tower[SECOND].isOrdered &&
+                 tower[THIRD].isOrdered &&
+                 tower[FIRST].sizeOfSubtower > 1 &&
+                 tower[SECOND].size > 1 &&
+                 tower[THIRD].size > 1 &&
+                 tower[FIRST].baseRingSizeOfSubtower + 1 == tower[THIRD].topRingSize &&
+                 tower[FIRST].topRingSizeOfBaseTower + 1 == tower[SECOND].topRingSize )
+            moveRing(_board, FIRST, SECOND);  
+        else if (!tower[FIRST].isOrdered &&
+                 !tower[SECOND].isOrdered &&
+                 tower[THIRD].isOrdered &&
+                 tower[FIRST].sizeOfSubtower == 1 &&
+                 tower[SECOND].sizeOfSubtower == 1 &&
+                 tower[THIRD].size > 1 &&
+                 tower[FIRST].topRingSize + 1 == tower[THIRD].topRingSize &&
+                 tower[FIRST].topRingSize == tower[SECOND].topRingSize + 1 &&
+                 tower[FIRST].topRingSizeOfBaseTower + 1 == tower[SECOND].topRingSizeOfBaseTower && 
+                 tower[FIRST].topRingSizeOfBaseTower == tower[THIRD].baseRingSize + 1)
+            moveRing(_board, FIRST, THIRD);  
+        else if (!tower[FIRST].isOrdered &&
+                 tower[SECOND].isOrdered &&
+                 tower[THIRD].isOrdered &&
+                 tower[FIRST].sizeOfSubtower == 1 &&
+                 tower[SECOND].size > 1 &&
+                 tower[THIRD].size > 1 &&
+                 tower[FIRST].topRingSize + 1 == tower[THIRD].topRingSize &&
+                 tower[SECOND].topRingSize == tower[THIRD].baseRingSize + 1 &&
+                 tower[FIRST].topRingSizeOfBaseTower == tower[SECOND].baseRingSize + 1)
+            moveRing(_board, FIRST, THIRD); 
         else
         {
             std::cout<<" "<<tower[FIRST].baseRingSizeOfSubtower<<" "<<tower[SECOND].topRingSizeOfBaseTower<<" "<<tower[THIRD].baseRingSizeOfSubtower<<" "<<std::endl;
