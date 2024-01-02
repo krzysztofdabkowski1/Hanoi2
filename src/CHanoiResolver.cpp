@@ -409,6 +409,35 @@ void HanoiResolver::MakeNextStep(Board& _board)
                  tower[SECOND].topRingSize == tower[THIRD].baseRingSize + 1 &&
                  tower[FIRST].topRingSizeOfBaseTower == tower[SECOND].baseRingSize + 1)
             moveRing(_board, THIRD, SECOND);
+        else if (!tower[FIRST].isOrdered &&
+                 !tower[SECOND].isOrdered &&
+                 tower[THIRD].isOrdered &&
+                 tower[FIRST].sizeOfSubtower == 1 &&
+                 tower[SECOND].sizeOfSubtower == 1 &&
+                 tower[THIRD].size > 1 &&
+                 tower[FIRST].topRingSize + 1 == tower[SECOND].topRingSize &&
+                 tower[SECOND].topRingSize + 1 == tower[THIRD].topRingSize &&
+                 tower[SECOND].topRingSizeOfBaseTower == tower[THIRD].baseRingSize + 1)
+            moveRing(_board, FIRST, SECOND);
+        else if (tower[FIRST].isOrdered &&
+                 !tower[SECOND].isOrdered &&
+                 tower[THIRD].isOrdered &&
+                 tower[FIRST].size == 1 &&
+                 tower[SECOND].sizeOfSubtower > 1 &&
+                 tower[THIRD].size > 1 &&
+                 tower[SECOND].baseRingSizeOfSubtower + 1 == tower[THIRD].topRingSize &&
+                 tower[SECOND].topRingSizeOfBaseTower == tower[THIRD].baseRingSize + 1)
+            moveRing(_board, THIRD, FIRST);
+        else if (!tower[FIRST].isOrdered &&
+                 tower[SECOND].isOrdered &&
+                 !tower[THIRD].isOrdered &&
+                 tower[FIRST].sizeOfSubtower > 1 &&
+                 tower[SECOND].size > 1 &&
+                 tower[THIRD].sizeOfSubtower == 1 &&
+                 tower[FIRST].baseRingSizeOfSubtower + 1 == tower[THIRD].topRingSizeOfBaseTower &&
+                 tower[FIRST].topRingSize == tower[THIRD].topRingSize + 1 &&
+                 tower[SECOND].topRingSize == tower[THIRD].topRingSizeOfBaseTower + 1)
+            moveRing(_board, THIRD, FIRST);
         else
         {
             std::cout<<" "<<tower[FIRST].baseRingSizeOfSubtower<<" "<<tower[SECOND].topRingSizeOfBaseTower<<" "<<tower[THIRD].baseRingSizeOfSubtower<<" "<<std::endl;
