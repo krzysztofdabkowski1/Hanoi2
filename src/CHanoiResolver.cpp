@@ -474,7 +474,40 @@ void HanoiResolver::MakeNextStep(Board& _board)
             }
         }
     }
+    else if (tower[THIRD].baseRingSize == _board.getNumberOfRings())
+    {
+        if     (tower[FIRST].isEmpty &&
+                tower[SECOND].isOrdered &&
+                tower[THIRD].isOrdered &&
+                tower[SECOND].size > 1 &&
+                tower[SECOND].baseRingSize + 1 == tower[THIRD].baseRingSize)
+            moveRing(_board, SECOND, (tower[SECOND].size % 2 == 0) ? FIRST : THIRD);   
+        else if(tower[FIRST].isEmpty &&
+                tower[SECOND].isOrdered &&
+                !tower[THIRD].isOrdered &&
+                tower[SECOND].size > 1 &&
+                tower[SECOND].baseRingSize + 1 == tower[THIRD].topRingSizeOfBaseTower)
+            moveRing(_board, SECOND, (tower[SECOND].size % 2 == 0) ? FIRST : THIRD);  
+        else if(tower[FIRST].isOrdered &&
+                tower[SECOND].isOrdered &&
+                !tower[THIRD].isOrdered &&
+                tower[FIRST].size == 1 &&
+                tower[SECOND].size > 1 &&
+                tower[FIRST].topRingSize + 1 == tower[SECOND].topRingSize &&
+                tower[FIRST].topRingSize == tower[THIRD].topRingSize + 1 &&
+                tower[SECOND].baseRingSize + 1 == tower[THIRD].topRingSizeOfBaseTower)
+            moveRing(_board, THIRD, FIRST); 
+        else if(tower[FIRST].isOrdered &&
+                tower[SECOND].isOrdered &&
+                tower[THIRD].isOrdered &&
+                tower[FIRST].size > 1 &&
+                tower[SECOND].size > 1 &&
+                tower[THIRD].size == 1 &&
+                tower[FIRST].baseRingSize + 1 == tower[SECOND].topRingSize &&
+                tower[SECOND].baseRingSize + 1 == tower[THIRD].baseRingSize)
+            moveRing(_board, SECOND, THIRD);
 
+    }
 
 
     tower.clear();
@@ -487,6 +520,7 @@ unsigned int HanoiResolver::ResolveGame(Board& _board)
 
 void HanoiResolver::moveRing(Board& _board, int _sourceTower, int _destTower)
 {
+    std::cout<<"kurka:"<<_sourceTower<<" rurka:"<<_destTower<<std::endl;
     setPointedTower(_board, _sourceTower);
     _board.moveRingTo(_destTower);
 }
