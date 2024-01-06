@@ -574,6 +574,184 @@ void HanoiResolver::MakeNextStep(Board& _board)
                 tower[SECOND].baseRingSizeOfSubtower + 1 == tower[THIRD].topRingSize &&
                 tower[FIRST].topRingSize == tower[THIRD].topRingSize + 1)
             moveRing(_board, THIRD, FIRST);
+        else if(tower[FIRST].isOrdered &&
+                !tower[SECOND].isOrdered &&
+                tower[THIRD].isOrdered &&
+                tower[FIRST].size > 1 &&
+                tower[SECOND].sizeOfSubtower > 1 &&
+                tower[THIRD].size == 1 &&
+                tower[FIRST].topRingSize == tower[SECOND].baseRingSizeOfSubtower + 1 &&
+                tower[FIRST].baseRingSize + 1 == tower[SECOND].topRingSizeOfBaseTower)
+            moveRing(_board, SECOND, (tower[SECOND].sizeOfSubtower % 2 == 0) ? THIRD : FIRST);
+        else if(tower[FIRST].isOrdered &&
+                !tower[SECOND].isOrdered &&
+                !tower[THIRD].isOrdered &&
+                tower[FIRST].size > 1 &&
+                tower[SECOND].sizeOfSubtower == 1 &&
+                tower[THIRD].sizeOfSubtower == 1 &&
+                tower[FIRST].topRingSize == tower[SECOND].topRingSize + 1 &&
+                tower[FIRST].baseRingSize + 1 == tower[SECOND].topRingSizeOfBaseTower &&
+                tower[SECOND].topRingSize == tower[THIRD].topRingSize + 1)
+            moveRing(_board, SECOND, FIRST);    
+        else if(tower[FIRST].isOrdered &&
+                tower[SECOND].isOrdered &&
+                !tower[THIRD].isOrdered &&
+                tower[FIRST].size > 1 &&
+                tower[SECOND].size > 1 &&
+                tower[THIRD].sizeOfSubtower == 1 &&
+                tower[FIRST].topRingSize == tower[THIRD].topRingSize + 1 &&
+                tower[FIRST].baseRingSize + 1 == tower[SECOND].topRingSize &&
+                tower[SECOND].baseRingSize + 1 == tower[THIRD].topRingSizeOfBaseTower)
+            moveRing(_board, THIRD, FIRST);
+        else if(tower[FIRST].isOrdered &&
+                !tower[SECOND].isOrdered &&
+                !tower[THIRD].isOrdered &&
+                tower[FIRST].size > 1 &&
+                tower[SECOND].sizeOfSubtower == 1 &&
+                tower[THIRD].sizeOfSubtower == 1 &&
+                tower[FIRST].topRingSize == tower[SECOND].topRingSize + 1 &&
+                tower[FIRST].baseRingSize + 1 == tower[THIRD].topRingSize &&
+                tower[SECOND].topRingSizeOfBaseTower == tower[THIRD].topRingSize + 1)
+            moveRing(_board, FIRST, THIRD);
+        else if(tower[FIRST].isOrdered &&
+                !tower[SECOND].isOrdered &&
+                !tower[THIRD].isOrdered &&
+                tower[FIRST].size > 1 &&
+                tower[SECOND].sizeOfSubtower == 1 &&
+                tower[THIRD].sizeOfSubtower == 1 &&
+                tower[SECOND].topRingSize + 1 == tower[THIRD].topRingSize &&
+                tower[FIRST].topRingSize == tower[THIRD].topRingSize + 1 &&
+                tower[FIRST].baseRingSize + 1 == tower[THIRD].topRingSizeOfBaseTower &&
+                tower[SECOND].topRingSizeOfBaseTower == tower[THIRD].topRingSizeOfBaseTower + 1)
+            moveRing(_board, SECOND, THIRD);
+        else if(tower[FIRST].isOrdered &&
+                tower[SECOND].isOrdered &&
+                !tower[THIRD].isOrdered &&
+                tower[FIRST].size > 1 &&
+                tower[SECOND].size > 1 &&
+                tower[THIRD].sizeOfSubtower > 1 &&
+                tower[FIRST].baseRingSize + 1 == tower[THIRD].topRingSizeOfBaseTower &&
+                tower[SECOND].topRingSize == tower[THIRD].topRingSizeOfBaseTower + 1 &&
+                tower[FIRST].topRingSize == tower[THIRD].baseRingSizeOfSubtower + 1)
+            moveRing(_board, FIRST, SECOND);
+        else if(tower[FIRST].isOrdered &&
+                tower[SECOND].isOrdered &&
+                !tower[THIRD].isOrdered &&
+                tower[FIRST].size > 1 &&
+                tower[SECOND].size > 1 &&
+                tower[THIRD].sizeOfSubtower > 1 &&
+                tower[FIRST].baseRingSize + 1 == tower[THIRD].topRingSizeOfBaseTower &&
+                tower[SECOND].topRingSize == tower[THIRD].topRingSizeOfBaseTower + 1 &&
+                tower[FIRST].topRingSize == tower[THIRD].baseRingSizeOfSubtower + 1)
+            moveRing(_board, FIRST, SECOND);
+        else if(tower[FIRST].isOrdered &&
+                !tower[SECOND].isOrdered &&
+                !tower[THIRD].isOrdered &&
+                tower[FIRST].size == 1 &&
+                tower[SECOND].sizeOfSubtower == 1 &&
+                tower[THIRD].sizeOfSubtower > 1 &&
+                tower[FIRST].topRingSize == tower[SECOND].topRingSize + 1 &&
+                tower[FIRST].topRingSize + 1 == tower[THIRD].topRingSizeOfBaseTower &&
+                tower[SECOND].topRingSizeOfBaseTower == tower[THIRD].topRingSizeOfBaseTower + 1 &&
+                tower[SECOND].topRingSize == tower[THIRD].baseRingSizeOfSubtower + 1)
+            moveRing(_board, THIRD, (tower[THIRD].sizeOfSubtower % 2 == 0) ? FIRST : SECOND);
+        else if(!tower[FIRST].isOrdered &&
+                !tower[SECOND].isOrdered &&
+                !tower[THIRD].isOrdered &&
+                tower[FIRST].sizeOfSubtower == 1 &&
+                tower[SECOND].sizeOfSubtower == 1 &&
+                tower[THIRD].sizeOfSubtower == 1 &&
+                tower[FIRST].topRingSize + 1 == tower[THIRD].topRingSize &&
+                tower[SECOND].topRingSize == tower[THIRD].topRingSize + 1 &&
+                tower[FIRST].topRingSizeOfBaseTower == tower[SECOND].topRingSize + 1 &&
+                tower[FIRST].topRingSizeOfBaseTower + 1 == tower[THIRD].topRingSizeOfBaseTower &&
+                tower[SECOND].topRingSizeOfBaseTower == tower[THIRD].topRingSizeOfBaseTower + 1)
+            moveRing(_board, THIRD, SECOND);
+        else if(!tower[FIRST].isOrdered &&
+                !tower[SECOND].isOrdered &&
+                !tower[THIRD].isOrdered &&
+                tower[FIRST].sizeOfSubtower == 1 &&
+                tower[SECOND].sizeOfSubtower > 1 &&
+                tower[THIRD].sizeOfSubtower == 1 &&
+                tower[FIRST].topRingSize + 1 == tower[SECOND].topRingSize &&
+                tower[FIRST].topRingSizeOfBaseTower == tower[SECOND].baseRingSizeOfSubtower + 1 &&
+                tower[FIRST].topRingSizeOfBaseTower + 1 == tower[THIRD].topRingSize &&
+                tower[SECOND].topRingSizeOfBaseTower == tower[THIRD].topRingSize + 1)
+            moveRing(_board, FIRST, SECOND);
+        else if(tower[FIRST].isOrdered &&
+                !tower[SECOND].isOrdered &&
+                !tower[THIRD].isOrdered &&
+                tower[FIRST].size == 1 &&
+                tower[SECOND].sizeOfSubtower > 1 &&
+                tower[THIRD].sizeOfSubtower == 1 &&
+                tower[FIRST].topRingSize == tower[SECOND].baseRingSizeOfSubtower + 1 &&
+                tower[FIRST].topRingSize + 1 == tower[THIRD].topRingSize &&
+                tower[SECOND].topRingSizeOfBaseTower == tower[THIRD].topRingSize + 1)
+            moveRing(_board, FIRST, THIRD);
+        else if(tower[FIRST].isEmpty &&
+                !tower[SECOND].isOrdered &&
+                !tower[THIRD].isOrdered &&
+                tower[SECOND].sizeOfSubtower > 1 &&
+                tower[THIRD].sizeOfSubtower > 1 &&
+                tower[SECOND].baseRingSizeOfSubtower + 1 == tower[THIRD].topRingSize &&
+                tower[SECOND].topRingSizeOfBaseTower == tower[THIRD].baseRingSizeOfSubtower + 1)
+            moveRing(_board, SECOND, (tower[SECOND].sizeOfSubtower % 2 == 0) ? FIRST : THIRD);
+        else if(tower[FIRST].isEmpty &&
+                !tower[SECOND].isOrdered &&
+                !tower[THIRD].isOrdered &&
+                tower[SECOND].sizeOfSubtower > 1 &&
+                tower[THIRD].sizeOfSubtower == 1 &&
+                tower[SECOND].topRingSize == tower[THIRD].topRingSize + 1 &&
+                tower[SECOND].baseRingSizeOfSubtower + 1 == tower[THIRD].topRingSizeOfBaseTower)
+            moveRing(_board, SECOND, (tower[SECOND].sizeOfSubtower % 2 == 0) ? FIRST : THIRD);
+        else if(tower[FIRST].isOrdered &&
+                !tower[SECOND].isOrdered &&
+                !tower[THIRD].isOrdered &&
+                tower[SECOND].sizeOfSubtower == 1 &&
+                tower[THIRD].sizeOfSubtower == 1 &&
+                tower[FIRST].topRingSize + 1 == tower[SECOND].topRingSize &&
+                tower[FIRST].topRingSize == tower[THIRD].topRingSize + 1 &&
+                tower[SECOND].topRingSize + 1 == tower[THIRD].topRingSizeOfBaseTower)
+            moveRing(_board, THIRD, FIRST); 
+        else if(tower[FIRST].isOrdered &&
+                !tower[SECOND].isOrdered &&
+                !tower[THIRD].isOrdered &&
+                tower[FIRST].size > 1 &&
+                tower[SECOND].sizeOfSubtower == 1 &&
+                tower[THIRD].sizeOfSubtower > 1 &&
+                tower[FIRST].baseRingSize + 1 == tower[SECOND].topRingSize &&
+                tower[SECOND].topRingSize + 1 == tower[THIRD].topRingSize &&
+                tower[SECOND].topRingSizeOfBaseTower == tower[THIRD].baseRingSizeOfSubtower + 1)
+            moveRing(_board, SECOND, THIRD); 
+        else if(tower[FIRST].isOrdered &&
+                tower[SECOND].isOrdered &&
+                !tower[THIRD].isOrdered &&
+                tower[FIRST].size > 1 &&
+                tower[SECOND].size > 1 &&
+                tower[THIRD].sizeOfSubtower > 1 &&
+                tower[FIRST].baseRingSize + 1 == tower[THIRD].topRingSize &&
+                tower[SECOND].topRingSize == tower[THIRD].baseRingSizeOfSubtower + 1)
+            moveRing(_board, FIRST, (tower[FIRST].size % 2 == 0) ? SECOND : THIRD); 
+        else if(tower[FIRST].isOrdered &&
+                !tower[SECOND].isOrdered &&
+                !tower[THIRD].isOrdered &&
+                tower[FIRST].size == 1 &&
+                tower[SECOND].sizeOfSubtower == 1 &&
+                tower[THIRD].sizeOfSubtower > 1 &&
+                tower[FIRST].topRingSize + 1 == tower[THIRD].topRingSize &&
+                tower[FIRST].topRingSize == tower[SECOND].topRingSize + 1 &&
+                tower[SECOND].topRingSizeOfBaseTower == tower[THIRD].baseRingSizeOfSubtower + 1)
+            moveRing(_board, FIRST, THIRD); 
+        else if(tower[FIRST].isOrdered &&
+                tower[SECOND].isOrdered &&
+                !tower[THIRD].isOrdered &&
+                tower[FIRST].size == 1 &&
+                tower[SECOND].size == 1 &&
+                tower[THIRD].sizeOfSubtower > 1 &&
+                tower[FIRST].topRingSize + 1 == tower[SECOND].topRingSize &&
+                tower[FIRST].topRingSize == tower[THIRD].baseRingSizeOfSubtower + 1 &&
+                tower[SECOND].topRingSize + 1 == tower[THIRD].topRingSizeOfBaseTower)
+            moveRing(_board, THIRD, (tower[THIRD].sizeOfSubtower % 2 == 0) ? SECOND : FIRST); 
     }
 
 
