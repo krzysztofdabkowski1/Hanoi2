@@ -857,6 +857,17 @@ void HanoiResolver::MakeNextStep(Board& _board)
                 tower[SECOND].topRingSize + 1 == tower[THIRD].topRingSize &&
                 tower[SECOND].topRingSizeOfBaseTower + 1 == tower[THIRD].topRingSizeOfBaseTower)
             moveRing(_board, SECOND, THIRD);
+        else if(!tower[FIRST].isOrdered &&
+                !tower[SECOND].isOrdered &&
+                !tower[THIRD].isOrdered &&
+                tower[FIRST].sizeOfSubtower == 1 &&
+                tower[SECOND].sizeOfSubtower == 1 &&
+                tower[THIRD].sizeOfSubtower > 1 &&
+                tower[FIRST].topRingSize + 1 == tower[SECOND].topRingSize &&
+                tower[FIRST].topRingSize == tower[THIRD].baseRingSizeOfSubtower + 1 &&
+                tower[FIRST].topRingSizeOfBaseTower + 1 == tower[SECOND].topRingSizeOfBaseTower &&
+                tower[SECOND].topRingSize + 1 == tower[THIRD].topRingSizeOfBaseTower)
+            moveRing(_board, FIRST, SECOND);            
     }
 
 
